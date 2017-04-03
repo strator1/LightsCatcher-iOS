@@ -1,0 +1,556 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A30129E61E92A86900B45EB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30129E51E92A86900B45EB1 /* AppDelegate.swift */; };
+		A30129E81E92A86900B45EB1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30129E71E92A86900B45EB1 /* ViewController.swift */; };
+		A30129EB1E92A86900B45EB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A30129E91E92A86900B45EB1 /* Main.storyboard */; };
+		A30129EE1E92A86900B45EB1 /* sammelAmpel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A30129EC1E92A86900B45EB1 /* sammelAmpel.xcdatamodeld */; };
+		A30129F01E92A86900B45EB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A30129EF1E92A86900B45EB1 /* Assets.xcassets */; };
+		A30129F31E92A86900B45EB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A30129F11E92A86900B45EB1 /* LaunchScreen.storyboard */; };
+		A30129FE1E92A86900B45EB1 /* sammelAmpelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30129FD1E92A86900B45EB1 /* sammelAmpelTests.swift */; };
+		A3012A091E92A86900B45EB1 /* sammelAmpelUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3012A081E92A86900B45EB1 /* sammelAmpelUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A30129FA1E92A86900B45EB1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A30129DA1E92A86900B45EB1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A30129E11E92A86900B45EB1;
+			remoteInfo = sammelAmpel;
+		};
+		A3012A051E92A86900B45EB1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A30129DA1E92A86900B45EB1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A30129E11E92A86900B45EB1;
+			remoteInfo = sammelAmpel;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A30129E21E92A86900B45EB1 /* sammelAmpel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sammelAmpel.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A30129E51E92A86900B45EB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A30129E71E92A86900B45EB1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A30129EA1E92A86900B45EB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A30129ED1E92A86900B45EB1 /* sammelAmpel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = sammelAmpel.xcdatamodel; sourceTree = "<group>"; };
+		A30129EF1E92A86900B45EB1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A30129F21E92A86900B45EB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A30129F41E92A86900B45EB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A30129F91E92A86900B45EB1 /* sammelAmpelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = sammelAmpelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A30129FD1E92A86900B45EB1 /* sammelAmpelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sammelAmpelTests.swift; sourceTree = "<group>"; };
+		A30129FF1E92A86900B45EB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A3012A041E92A86900B45EB1 /* sammelAmpelUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = sammelAmpelUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3012A081E92A86900B45EB1 /* sammelAmpelUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sammelAmpelUITests.swift; sourceTree = "<group>"; };
+		A3012A0A1E92A86900B45EB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A30129DF1E92A86900B45EB1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A30129F61E92A86900B45EB1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A3012A011E92A86900B45EB1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A30129D91E92A86900B45EB1 = {
+			isa = PBXGroup;
+			children = (
+				A30129E41E92A86900B45EB1 /* sammelAmpel */,
+				A30129FC1E92A86900B45EB1 /* sammelAmpelTests */,
+				A3012A071E92A86900B45EB1 /* sammelAmpelUITests */,
+				A30129E31E92A86900B45EB1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A30129E31E92A86900B45EB1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A30129E21E92A86900B45EB1 /* sammelAmpel.app */,
+				A30129F91E92A86900B45EB1 /* sammelAmpelTests.xctest */,
+				A3012A041E92A86900B45EB1 /* sammelAmpelUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A30129E41E92A86900B45EB1 /* sammelAmpel */ = {
+			isa = PBXGroup;
+			children = (
+				A30129E51E92A86900B45EB1 /* AppDelegate.swift */,
+				A30129E71E92A86900B45EB1 /* ViewController.swift */,
+				A30129E91E92A86900B45EB1 /* Main.storyboard */,
+				A30129EF1E92A86900B45EB1 /* Assets.xcassets */,
+				A30129F11E92A86900B45EB1 /* LaunchScreen.storyboard */,
+				A30129F41E92A86900B45EB1 /* Info.plist */,
+				A30129EC1E92A86900B45EB1 /* sammelAmpel.xcdatamodeld */,
+			);
+			path = sammelAmpel;
+			sourceTree = "<group>";
+		};
+		A30129FC1E92A86900B45EB1 /* sammelAmpelTests */ = {
+			isa = PBXGroup;
+			children = (
+				A30129FD1E92A86900B45EB1 /* sammelAmpelTests.swift */,
+				A30129FF1E92A86900B45EB1 /* Info.plist */,
+			);
+			path = sammelAmpelTests;
+			sourceTree = "<group>";
+		};
+		A3012A071E92A86900B45EB1 /* sammelAmpelUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A3012A081E92A86900B45EB1 /* sammelAmpelUITests.swift */,
+				A3012A0A1E92A86900B45EB1 /* Info.plist */,
+			);
+			path = sammelAmpelUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A30129E11E92A86900B45EB1 /* sammelAmpel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A3012A0D1E92A86900B45EB1 /* Build configuration list for PBXNativeTarget "sammelAmpel" */;
+			buildPhases = (
+				A30129DE1E92A86900B45EB1 /* Sources */,
+				A30129DF1E92A86900B45EB1 /* Frameworks */,
+				A30129E01E92A86900B45EB1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = sammelAmpel;
+			productName = sammelAmpel;
+			productReference = A30129E21E92A86900B45EB1 /* sammelAmpel.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A30129F81E92A86900B45EB1 /* sammelAmpelTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A3012A101E92A86900B45EB1 /* Build configuration list for PBXNativeTarget "sammelAmpelTests" */;
+			buildPhases = (
+				A30129F51E92A86900B45EB1 /* Sources */,
+				A30129F61E92A86900B45EB1 /* Frameworks */,
+				A30129F71E92A86900B45EB1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A30129FB1E92A86900B45EB1 /* PBXTargetDependency */,
+			);
+			name = sammelAmpelTests;
+			productName = sammelAmpelTests;
+			productReference = A30129F91E92A86900B45EB1 /* sammelAmpelTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A3012A031E92A86900B45EB1 /* sammelAmpelUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A3012A131E92A86900B45EB1 /* Build configuration list for PBXNativeTarget "sammelAmpelUITests" */;
+			buildPhases = (
+				A3012A001E92A86900B45EB1 /* Sources */,
+				A3012A011E92A86900B45EB1 /* Frameworks */,
+				A3012A021E92A86900B45EB1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A3012A061E92A86900B45EB1 /* PBXTargetDependency */,
+			);
+			name = sammelAmpelUITests;
+			productName = sammelAmpelUITests;
+			productReference = A3012A041E92A86900B45EB1 /* sammelAmpelUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A30129DA1E92A86900B45EB1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Patrick Valenta";
+				TargetAttributes = {
+					A30129E11E92A86900B45EB1 = {
+						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = P84Z6JD2F2;
+						ProvisioningStyle = Automatic;
+					};
+					A30129F81E92A86900B45EB1 = {
+						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = P84Z6JD2F2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = A30129E11E92A86900B45EB1;
+					};
+					A3012A031E92A86900B45EB1 = {
+						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = P84Z6JD2F2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = A30129E11E92A86900B45EB1;
+					};
+				};
+			};
+			buildConfigurationList = A30129DD1E92A86900B45EB1 /* Build configuration list for PBXProject "sammelAmpel" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A30129D91E92A86900B45EB1;
+			productRefGroup = A30129E31E92A86900B45EB1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A30129E11E92A86900B45EB1 /* sammelAmpel */,
+				A30129F81E92A86900B45EB1 /* sammelAmpelTests */,
+				A3012A031E92A86900B45EB1 /* sammelAmpelUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A30129E01E92A86900B45EB1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A30129F31E92A86900B45EB1 /* LaunchScreen.storyboard in Resources */,
+				A30129F01E92A86900B45EB1 /* Assets.xcassets in Resources */,
+				A30129EB1E92A86900B45EB1 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A30129F71E92A86900B45EB1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A3012A021E92A86900B45EB1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A30129DE1E92A86900B45EB1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A30129E81E92A86900B45EB1 /* ViewController.swift in Sources */,
+				A30129EE1E92A86900B45EB1 /* sammelAmpel.xcdatamodeld in Sources */,
+				A30129E61E92A86900B45EB1 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A30129F51E92A86900B45EB1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A30129FE1E92A86900B45EB1 /* sammelAmpelTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A3012A001E92A86900B45EB1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A3012A091E92A86900B45EB1 /* sammelAmpelUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A30129FB1E92A86900B45EB1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A30129E11E92A86900B45EB1 /* sammelAmpel */;
+			targetProxy = A30129FA1E92A86900B45EB1 /* PBXContainerItemProxy */;
+		};
+		A3012A061E92A86900B45EB1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A30129E11E92A86900B45EB1 /* sammelAmpel */;
+			targetProxy = A3012A051E92A86900B45EB1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A30129E91E92A86900B45EB1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A30129EA1E92A86900B45EB1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A30129F11E92A86900B45EB1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A30129F21E92A86900B45EB1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A3012A0B1E92A86900B45EB1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A3012A0C1E92A86900B45EB1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A3012A0E1E92A86900B45EB1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = P84Z6JD2F2;
+				INFOPLIST_FILE = sammelAmpel/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hsa.sammelAmpel;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		A3012A0F1E92A86900B45EB1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = P84Z6JD2F2;
+				INFOPLIST_FILE = sammelAmpel/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hsa.sammelAmpel;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		A3012A111E92A86900B45EB1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = P84Z6JD2F2;
+				INFOPLIST_FILE = sammelAmpelTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hsa.sammelAmpelTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/sammelAmpel.app/sammelAmpel";
+			};
+			name = Debug;
+		};
+		A3012A121E92A86900B45EB1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = P84Z6JD2F2;
+				INFOPLIST_FILE = sammelAmpelTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hsa.sammelAmpelTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/sammelAmpel.app/sammelAmpel";
+			};
+			name = Release;
+		};
+		A3012A141E92A86900B45EB1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = P84Z6JD2F2;
+				INFOPLIST_FILE = sammelAmpelUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hsa.sammelAmpelUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = sammelAmpel;
+			};
+			name = Debug;
+		};
+		A3012A151E92A86900B45EB1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = P84Z6JD2F2;
+				INFOPLIST_FILE = sammelAmpelUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hsa.sammelAmpelUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = sammelAmpel;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A30129DD1E92A86900B45EB1 /* Build configuration list for PBXProject "sammelAmpel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A3012A0B1E92A86900B45EB1 /* Debug */,
+				A3012A0C1E92A86900B45EB1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A3012A0D1E92A86900B45EB1 /* Build configuration list for PBXNativeTarget "sammelAmpel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A3012A0E1E92A86900B45EB1 /* Debug */,
+				A3012A0F1E92A86900B45EB1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A3012A101E92A86900B45EB1 /* Build configuration list for PBXNativeTarget "sammelAmpelTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A3012A111E92A86900B45EB1 /* Debug */,
+				A3012A121E92A86900B45EB1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A3012A131E92A86900B45EB1 /* Build configuration list for PBXNativeTarget "sammelAmpelUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A3012A141E92A86900B45EB1 /* Debug */,
+				A3012A151E92A86900B45EB1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A30129EC1E92A86900B45EB1 /* sammelAmpel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A30129ED1E92A86900B45EB1 /* sammelAmpel.xcdatamodel */,
+			);
+			currentVersion = A30129ED1E92A86900B45EB1 /* sammelAmpel.xcdatamodel */;
+			path = sammelAmpel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = A30129DA1E92A86900B45EB1 /* Project object */;
+}
