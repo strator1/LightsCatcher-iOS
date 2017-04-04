@@ -184,7 +184,7 @@ class MetaInfoInputViewController: UIViewController {
                         if let pos = self.photoInformation?.gyroPosition {
                             gyroPosition = String(pos)
                         }
-                        
+                        //change
                         if let lat = self.photoInformation?.latitude {
                             latitude = lat.description
                         }
