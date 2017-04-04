@@ -7,14 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		60F794413636C57223A0292E /* Pods_sammelAmpel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF7B2DFF13AC4CCB4B9E181D /* Pods_sammelAmpel.framework */; };
+		7A347A21B83372558AC8C131 /* Pods_sammelAmpelTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13727C80F1D4C26D4AC1A1A1 /* Pods_sammelAmpelTests.framework */; };
+		958797FEBBD5E91F260D4D04 /* Pods_sammelAmpelUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBAE0753F0526AC4E631999D /* Pods_sammelAmpelUITests.framework */; };
 		A30129E61E92A86900B45EB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30129E51E92A86900B45EB1 /* AppDelegate.swift */; };
-		A30129E81E92A86900B45EB1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30129E71E92A86900B45EB1 /* ViewController.swift */; };
-		A30129EB1E92A86900B45EB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A30129E91E92A86900B45EB1 /* Main.storyboard */; };
 		A30129EE1E92A86900B45EB1 /* sammelAmpel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A30129EC1E92A86900B45EB1 /* sammelAmpel.xcdatamodeld */; };
 		A30129F01E92A86900B45EB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A30129EF1E92A86900B45EB1 /* Assets.xcassets */; };
 		A30129F31E92A86900B45EB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A30129F11E92A86900B45EB1 /* LaunchScreen.storyboard */; };
 		A30129FE1E92A86900B45EB1 /* sammelAmpelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30129FD1E92A86900B45EB1 /* sammelAmpelTests.swift */; };
 		A3012A091E92A86900B45EB1 /* sammelAmpelUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3012A081E92A86900B45EB1 /* sammelAmpelUITests.swift */; };
+		A3012A171E92A90B00B45EB1 /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3012A161E92A90B00B45EB1 /* HomeTabBarController.swift */; };
+		A38F45981E93EED000646FF1 /* PhotoInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38F45971E93EED000646FF1 /* PhotoInformation.swift */; };
+		A38F459B1E93F11800646FF1 /* MetaInfoInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38F459A1E93F11800646FF1 /* MetaInfoInputViewController.swift */; };
+		A38F459D1E9426A700646FF1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A38F459C1E9426A700646FF1 /* GoogleService-Info.plist */; };
+		A38F459F1E94272300646FF1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38F459E1E94272300646FF1 /* LoginViewController.swift */; };
+		A38F45A21E94279F00646FF1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38F45A11E94279F00646FF1 /* Extensions.swift */; };
+		A3B09DE91E92A97F00ADB48F /* AddPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B09DE81E92A97F00ADB48F /* AddPhotoViewController.swift */; };
+		A3B09DEB1E92A9CB00ADB48F /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B09DEA1E92A9CB00ADB48F /* RankingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,10 +44,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		13727C80F1D4C26D4AC1A1A1 /* Pods_sammelAmpelTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_sammelAmpelTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		234FD4166797827F36EA4E99 /* Pods-sammelAmpelTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sammelAmpelTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-sammelAmpelTests/Pods-sammelAmpelTests.debug.xcconfig"; sourceTree = "<group>"; };
+		25EC3F32C36915467C3BB94F /* Pods-sammelAmpelTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sammelAmpelTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-sammelAmpelTests/Pods-sammelAmpelTests.release.xcconfig"; sourceTree = "<group>"; };
+		374735E8CB41851673862F71 /* Pods-sammelAmpel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sammelAmpel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-sammelAmpel/Pods-sammelAmpel.debug.xcconfig"; sourceTree = "<group>"; };
+		9DF79E165425C71059C40188 /* Pods-sammelAmpel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sammelAmpel.release.xcconfig"; path = "Pods/Target Support Files/Pods-sammelAmpel/Pods-sammelAmpel.release.xcconfig"; sourceTree = "<group>"; };
 		A30129E21E92A86900B45EB1 /* sammelAmpel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sammelAmpel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A30129E51E92A86900B45EB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A30129E71E92A86900B45EB1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		A30129EA1E92A86900B45EB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A30129ED1E92A86900B45EB1 /* sammelAmpel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = sammelAmpel.xcdatamodel; sourceTree = "<group>"; };
 		A30129EF1E92A86900B45EB1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A30129F21E92A86900B45EB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +61,18 @@
 		A3012A041E92A86900B45EB1 /* sammelAmpelUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = sammelAmpelUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3012A081E92A86900B45EB1 /* sammelAmpelUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sammelAmpelUITests.swift; sourceTree = "<group>"; };
 		A3012A0A1E92A86900B45EB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A3012A161E92A90B00B45EB1 /* HomeTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
+		A38F45971E93EED000646FF1 /* PhotoInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoInformation.swift; sourceTree = "<group>"; };
+		A38F459A1E93F11800646FF1 /* MetaInfoInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetaInfoInputViewController.swift; sourceTree = "<group>"; };
+		A38F459C1E9426A700646FF1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A38F459E1E94272300646FF1 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		A38F45A11E94279F00646FF1 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		A3B09DE81E92A97F00ADB48F /* AddPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPhotoViewController.swift; sourceTree = "<group>"; };
+		A3B09DEA1E92A9CB00ADB48F /* RankingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
+		EF7B2DFF13AC4CCB4B9E181D /* Pods_sammelAmpel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_sammelAmpel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBAE0753F0526AC4E631999D /* Pods_sammelAmpelUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_sammelAmpelUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC8B008CE1D2365A5830A5CF /* Pods-sammelAmpelUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sammelAmpelUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-sammelAmpelUITests/Pods-sammelAmpelUITests.release.xcconfig"; sourceTree = "<group>"; };
+		FF38184150F2779451D19F6B /* Pods-sammelAmpelUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sammelAmpelUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-sammelAmpelUITests/Pods-sammelAmpelUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60F794413636C57223A0292E /* Pods_sammelAmpel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A347A21B83372558AC8C131 /* Pods_sammelAmpelTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +96,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				958797FEBBD5E91F260D4D04 /* Pods_sammelAmpelUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		163DF6814D7773AC828D6C1C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EF7B2DFF13AC4CCB4B9E181D /* Pods_sammelAmpel.framework */,
+				13727C80F1D4C26D4AC1A1A1 /* Pods_sammelAmpelTests.framework */,
+				FBAE0753F0526AC4E631999D /* Pods_sammelAmpelUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6C556E310C3DC6C4D3804250 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				374735E8CB41851673862F71 /* Pods-sammelAmpel.debug.xcconfig */,
+				9DF79E165425C71059C40188 /* Pods-sammelAmpel.release.xcconfig */,
+				234FD4166797827F36EA4E99 /* Pods-sammelAmpelTests.debug.xcconfig */,
+				25EC3F32C36915467C3BB94F /* Pods-sammelAmpelTests.release.xcconfig */,
+				FF38184150F2779451D19F6B /* Pods-sammelAmpelUITests.debug.xcconfig */,
+				FC8B008CE1D2365A5830A5CF /* Pods-sammelAmpelUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		A30129D91E92A86900B45EB1 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +133,8 @@
 				A30129FC1E92A86900B45EB1 /* sammelAmpelTests */,
 				A3012A071E92A86900B45EB1 /* sammelAmpelUITests */,
 				A30129E31E92A86900B45EB1 /* Products */,
+				6C556E310C3DC6C4D3804250 /* Pods */,
+				163DF6814D7773AC828D6C1C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,13 +151,19 @@
 		A30129E41E92A86900B45EB1 /* sammelAmpel */ = {
 			isa = PBXGroup;
 			children = (
+				A38F45A01E94279600646FF1 /* helpers */,
+				A38F45991E93F10300646FF1 /* metaWizard */,
+				A38F45961E93EEBE00646FF1 /* model */,
 				A30129E51E92A86900B45EB1 /* AppDelegate.swift */,
-				A30129E71E92A86900B45EB1 /* ViewController.swift */,
-				A30129E91E92A86900B45EB1 /* Main.storyboard */,
 				A30129EF1E92A86900B45EB1 /* Assets.xcassets */,
 				A30129F11E92A86900B45EB1 /* LaunchScreen.storyboard */,
 				A30129F41E92A86900B45EB1 /* Info.plist */,
+				A38F459C1E9426A700646FF1 /* GoogleService-Info.plist */,
 				A30129EC1E92A86900B45EB1 /* sammelAmpel.xcdatamodeld */,
+				A3012A161E92A90B00B45EB1 /* HomeTabBarController.swift */,
+				A3B09DE81E92A97F00ADB48F /* AddPhotoViewController.swift */,
+				A3B09DEA1E92A9CB00ADB48F /* RankingViewController.swift */,
+				A38F459E1E94272300646FF1 /* LoginViewController.swift */,
 			);
 			path = sammelAmpel;
 			sourceTree = "<group>";
@@ -128,6 +186,30 @@
 			path = sammelAmpelUITests;
 			sourceTree = "<group>";
 		};
+		A38F45961E93EEBE00646FF1 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				A38F45971E93EED000646FF1 /* PhotoInformation.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		A38F45991E93F10300646FF1 /* metaWizard */ = {
+			isa = PBXGroup;
+			children = (
+				A38F459A1E93F11800646FF1 /* MetaInfoInputViewController.swift */,
+			);
+			path = metaWizard;
+			sourceTree = "<group>";
+		};
+		A38F45A01E94279600646FF1 /* helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A38F45A11E94279F00646FF1 /* Extensions.swift */,
+			);
+			path = helpers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +217,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A3012A0D1E92A86900B45EB1 /* Build configuration list for PBXNativeTarget "sammelAmpel" */;
 			buildPhases = (
+				F24216DDED9AF39E34487E8D /* [CP] Check Pods Manifest.lock */,
 				A30129DE1E92A86900B45EB1 /* Sources */,
 				A30129DF1E92A86900B45EB1 /* Frameworks */,
 				A30129E01E92A86900B45EB1 /* Resources */,
+				1882833810D7622C7026E916 /* [CP] Embed Pods Frameworks */,
+				B7C26C3265E471194F292F29 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -152,9 +237,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A3012A101E92A86900B45EB1 /* Build configuration list for PBXNativeTarget "sammelAmpelTests" */;
 			buildPhases = (
+				D4582BE10F355AE1F290223E /* [CP] Check Pods Manifest.lock */,
 				A30129F51E92A86900B45EB1 /* Sources */,
 				A30129F61E92A86900B45EB1 /* Frameworks */,
 				A30129F71E92A86900B45EB1 /* Resources */,
+				E9F1350A05AA6E42F1DE54B8 /* [CP] Embed Pods Frameworks */,
+				6BDC02E28A344EA9360A261A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -170,9 +258,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A3012A131E92A86900B45EB1 /* Build configuration list for PBXNativeTarget "sammelAmpelUITests" */;
 			buildPhases = (
+				7905D544DABCE0123FAA7213 /* [CP] Check Pods Manifest.lock */,
 				A3012A001E92A86900B45EB1 /* Sources */,
 				A3012A011E92A86900B45EB1 /* Frameworks */,
 				A3012A021E92A86900B45EB1 /* Resources */,
+				D6AA46D512472466BE65B1E8 /* [CP] Embed Pods Frameworks */,
+				7ADFB4E3ADC37348ECBA1011 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -240,7 +331,7 @@
 			files = (
 				A30129F31E92A86900B45EB1 /* LaunchScreen.storyboard in Resources */,
 				A30129F01E92A86900B45EB1 /* Assets.xcassets in Resources */,
-				A30129EB1E92A86900B45EB1 /* Main.storyboard in Resources */,
+				A38F459D1E9426A700646FF1 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,14 +351,158 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1882833810D7622C7026E916 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-sammelAmpel/Pods-sammelAmpel-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6BDC02E28A344EA9360A261A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-sammelAmpelTests/Pods-sammelAmpelTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7905D544DABCE0123FAA7213 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7ADFB4E3ADC37348ECBA1011 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-sammelAmpelUITests/Pods-sammelAmpelUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B7C26C3265E471194F292F29 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-sammelAmpel/Pods-sammelAmpel-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D4582BE10F355AE1F290223E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D6AA46D512472466BE65B1E8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-sammelAmpelUITests/Pods-sammelAmpelUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E9F1350A05AA6E42F1DE54B8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-sammelAmpelTests/Pods-sammelAmpelTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F24216DDED9AF39E34487E8D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A30129DE1E92A86900B45EB1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A30129E81E92A86900B45EB1 /* ViewController.swift in Sources */,
+				A38F45981E93EED000646FF1 /* PhotoInformation.swift in Sources */,
+				A38F45A21E94279F00646FF1 /* Extensions.swift in Sources */,
+				A38F459B1E93F11800646FF1 /* MetaInfoInputViewController.swift in Sources */,
 				A30129EE1E92A86900B45EB1 /* sammelAmpel.xcdatamodeld in Sources */,
+				A3B09DE91E92A97F00ADB48F /* AddPhotoViewController.swift in Sources */,
+				A38F459F1E94272300646FF1 /* LoginViewController.swift in Sources */,
+				A3012A171E92A90B00B45EB1 /* HomeTabBarController.swift in Sources */,
 				A30129E61E92A86900B45EB1 /* AppDelegate.swift in Sources */,
+				A3B09DEB1E92A9CB00ADB48F /* RankingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,14 +538,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		A30129E91E92A86900B45EB1 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A30129EA1E92A86900B45EB1 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		A30129F11E92A86900B45EB1 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -419,10 +646,12 @@
 		};
 		A3012A0E1E92A86900B45EB1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 374735E8CB41851673862F71 /* Pods-sammelAmpel.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = P84Z6JD2F2;
 				INFOPLIST_FILE = sammelAmpel/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hsa.sammelAmpel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -432,10 +661,12 @@
 		};
 		A3012A0F1E92A86900B45EB1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9DF79E165425C71059C40188 /* Pods-sammelAmpel.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = P84Z6JD2F2;
 				INFOPLIST_FILE = sammelAmpel/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hsa.sammelAmpel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -445,6 +676,7 @@
 		};
 		A3012A111E92A86900B45EB1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 234FD4166797827F36EA4E99 /* Pods-sammelAmpelTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -460,6 +692,7 @@
 		};
 		A3012A121E92A86900B45EB1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 25EC3F32C36915467C3BB94F /* Pods-sammelAmpelTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -475,6 +708,7 @@
 		};
 		A3012A141E92A86900B45EB1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF38184150F2779451D19F6B /* Pods-sammelAmpelUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = P84Z6JD2F2;
@@ -489,6 +723,7 @@
 		};
 		A3012A151E92A86900B45EB1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FC8B008CE1D2365A5830A5CF /* Pods-sammelAmpelUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = P84Z6JD2F2;
@@ -520,6 +755,7 @@
 				A3012A0F1E92A86900B45EB1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A3012A101E92A86900B45EB1 /* Build configuration list for PBXNativeTarget "sammelAmpelTests" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +764,7 @@
 				A3012A121E92A86900B45EB1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A3012A131E92A86900B45EB1 /* Build configuration list for PBXNativeTarget "sammelAmpelUITests" */ = {
 			isa = XCConfigurationList;
@@ -536,6 +773,7 @@
 				A3012A151E92A86900B45EB1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

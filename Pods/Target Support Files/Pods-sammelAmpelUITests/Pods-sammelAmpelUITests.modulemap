@@ -1,0 +1,6 @@
+framework module Pods_sammelAmpelUITests {
+  umbrella header "Pods-sammelAmpelUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
