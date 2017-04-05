@@ -24,6 +24,7 @@
 		A38F45A21E94279F00646FF1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38F45A11E94279F00646FF1 /* Extensions.swift */; };
 		A3B09DE91E92A97F00ADB48F /* AddPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B09DE81E92A97F00ADB48F /* AddPhotoViewController.swift */; };
 		A3B09DEB1E92A9CB00ADB48F /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B09DEA1E92A9CB00ADB48F /* RankingViewController.swift */; };
+		A3FDD8821E94C36800FF9C69 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FDD8811E94C36800FF9C69 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		A38F45A11E94279F00646FF1 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		A3B09DE81E92A97F00ADB48F /* AddPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPhotoViewController.swift; sourceTree = "<group>"; };
 		A3B09DEA1E92A9CB00ADB48F /* RankingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
+		A3FDD8811E94C36800FF9C69 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		EF7B2DFF13AC4CCB4B9E181D /* Pods_sammelAmpel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_sammelAmpel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBAE0753F0526AC4E631999D /* Pods_sammelAmpelUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_sammelAmpelUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC8B008CE1D2365A5830A5CF /* Pods-sammelAmpelUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sammelAmpelUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-sammelAmpelUITests/Pods-sammelAmpelUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				A3B09DE81E92A97F00ADB48F /* AddPhotoViewController.swift */,
 				A3B09DEA1E92A9CB00ADB48F /* RankingViewController.swift */,
 				A38F459E1E94272300646FF1 /* LoginViewController.swift */,
+				A3FDD8811E94C36800FF9C69 /* SettingsViewController.swift */,
 			);
 			path = sammelAmpel;
 			sourceTree = "<group>";
@@ -497,6 +500,7 @@
 				A38F45981E93EED000646FF1 /* PhotoInformation.swift in Sources */,
 				A38F45A21E94279F00646FF1 /* Extensions.swift in Sources */,
 				A38F459B1E93F11800646FF1 /* MetaInfoInputViewController.swift in Sources */,
+				A3FDD8821E94C36800FF9C69 /* SettingsViewController.swift in Sources */,
 				A30129EE1E92A86900B45EB1 /* sammelAmpel.xcdatamodeld in Sources */,
 				A3B09DE91E92A97F00ADB48F /* AddPhotoViewController.swift in Sources */,
 				A38F459F1E94272300646FF1 /* LoginViewController.swift in Sources */,

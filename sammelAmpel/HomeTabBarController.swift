@@ -15,6 +15,19 @@ class HomeTabBarController: UITabBarController, UITabBarControllerDelegate {
         return UINavigationController(rootViewController: AddPhotoViewController())
     }()
     
+    lazy var cameraButton: UIButton = {
+        let btn = UIButton(type: .system)
+        
+        btn.setImage(#imageLiteral(resourceName: "Screenshot-50"), for: .normal)
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+        btn.titleLabel?.adjustsFontSizeToFitWidth = true
+        btn.setTitle("Kamera", for: .normal)
+        btn.addTarget(self, action: #selector(menuButtonAction), for: .touchUpInside)
+        return btn
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,19 +50,16 @@ class HomeTabBarController: UITabBarController, UITabBarControllerDelegate {
     }
     
     func setupMiddleButton() {
-        let menuButton = UIButton(frame: CGRect(x: 0, y: 0, width: 64, height: 48))
+        cameraButton.frame = CGRect(x: 0, y: 0, width: 64, height: 48)
         
-        var menuButtonFrame = menuButton.frame
+        var menuButtonFrame = cameraButton.frame
         menuButtonFrame.origin.y = view.bounds.height - menuButtonFrame.height
         menuButtonFrame.origin.x = view.bounds.width/2 - menuButtonFrame.size.width/2
-        menuButton.frame = menuButtonFrame
+        cameraButton.frame = menuButtonFrame
         
-        view.addSubview(menuButton)
+        view.addSubview(cameraButton)
         
-//        menuButton.setImage(UIImage(named: "example"), for: .normal)
-        menuButton.setTitle("Test", for: .normal)
-        menuButton.backgroundColor = .blue
-        menuButton.addTarget(self, action: #selector(menuButtonAction), for: .touchUpInside)
+        cameraButton.centerImageAndTitle(withSpacing: 4)
         
         view.layoutIfNeeded()
     }

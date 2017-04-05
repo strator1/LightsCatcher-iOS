@@ -28,6 +28,43 @@ extension UIViewController {
     }
 }
 
+extension UIButton {
+    
+    func centerImageAndTitle(withSpacing spacing: CGFloat) {
+        
+        let imageSize = self.imageView?.frame.size
+        let titleSize = self.titleLabel?.frame.size
+        
+        if let imageSize = imageSize, let titleSize = titleSize {
+            let totalHeight = imageSize.height + titleSize.height + spacing
+            
+            self.imageEdgeInsets = UIEdgeInsetsMake(-(totalHeight - imageSize.height), 6, 0, -titleSize.width)
+
+            self.titleEdgeInsets = UIEdgeInsetsMake(0, -imageSize.width, -(totalHeight - titleSize.height), 0)
+        }
+        
+    }
+    
+    private func imageWithColor(color: UIColor) -> UIImage {
+        let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
+        UIGraphicsBeginImageContext(rect.size)
+        let context = UIGraphicsGetCurrentContext()
+        
+        context?.setFillColor(color.cgColor)
+        context?.fill(rect)
+        
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return image!
+    }
+    
+    func setBackgroundColor(color: UIColor, forUIControlState state: UIControlState) {
+        self.setBackgroundImage(imageWithColor(color: color), for: state)
+    }
+    
+}
+
 extension Date {
     var millisecondsSince1970:Int {
         return Int((self.timeIntervalSince1970 * 1000.0).rounded())

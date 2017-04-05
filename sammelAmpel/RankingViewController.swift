@@ -16,7 +16,8 @@ class RankingViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         view.backgroundColor = .white
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "Settings-50"), style: .plain, target: self, action:  #selector(handleSettingsBtnPressed))
+        navigationItem.title = "Ranking"
         
         if FIRAuth.auth()?.currentUser?.uid == nil {
             perform(#selector(handleLogout), with: nil, afterDelay: 0)
@@ -40,6 +41,10 @@ class RankingViewController: UIViewController {
         }
         
         present(LoginViewController(), animated: true, completion: nil)
+    }
+    
+    func handleSettingsBtnPressed() {
+        navigationController?.pushViewController(SettingsViewController(), animated: true)
     }
     
 }
