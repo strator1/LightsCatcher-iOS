@@ -65,6 +65,14 @@ extension UIButton {
     
 }
 
+extension UIColor {
+    static var backgroundGray: UIColor {
+        //        return UIColor(red: 238/255, green: 236/255, blue: 244/255, alpha: 1)
+        //        return UIColor(r: 232, g: 236, b: 241)
+        return UIColor(r: 235, g: 235, b: 242)
+    }
+}
+
 extension Date {
     var millisecondsSince1970:Int {
         return Int((self.timeIntervalSince1970 * 1000.0).rounded())

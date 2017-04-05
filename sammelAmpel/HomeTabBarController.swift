@@ -39,8 +39,8 @@ class HomeTabBarController: UITabBarController, UITabBarControllerDelegate {
         
         viewControllers = [rankingViewController]
         
-        selectedViewController = rankingViewController
         setupMiddleButton()
+        selectedViewController = rankingViewController
     }
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {

@@ -77,17 +77,15 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         var accountSectionCellData = [SettingCellData]()
         var aboutSectionCellData = [SettingCellData]()
         
-        if FIRAuth.auth()?.currentUser?.uid == nil {
+        if !UserInformation.shared.isLoggedIn() {
             // Create new account cell
             let createAccountData = SettingCellData(image: nil, key: "Neuen Account erstellen ...", value: nil, action: .createAccount)
             accountSectionCellData.append(createAccountData)
         } else {
             // Create new userName cell
             // Create new logout cell
-            if let email = FIRAuth.auth()?.currentUser?.email {
-                let createUserNameData = SettingCellData(image: nil, key: "Username:", value: email, action: .displayOnly)
+                let createUserNameData = SettingCellData(image: nil, key: "Username", value: UserInformation.shared.name ?? "", action: .displayOnly)
                 accountSectionCellData.append(createUserNameData)
-            }
             
             let createLogoutData = SettingCellData(image: nil, key: "Logout", value: nil, action: .logout)
             accountSectionCellData.append(createLogoutData)
@@ -170,14 +168,16 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func handleLogout() {
-        do {
-            try FIRAuth.auth()?.signOut()
-        } catch let logoutError {
-            print(logoutError)
-        }
-        
-        present(LoginViewController(), animated: true) {
-            self.navigationController?.popViewController(animated: false)
+        UserInformation.shared.logout { (err) in
+            if let error = err {
+                //TODO errorhandling
+                print(error.localizedDescription)
+                return
+            }
+            
+            present(LoginViewController(), animated: true) {
+                self.navigationController?.popViewController(animated: false)
+            }
         }
     }
     

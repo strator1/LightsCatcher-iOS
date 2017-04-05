@@ -177,7 +177,7 @@ class LoginViewController: UIViewController {
             let ref = FIRDatabase.database().reference(fromURL: "https://hsaampelapp.firebaseio.com/")
             let usersRef = ref.child("users").child(uid)
             
-            let values = ["name": name, "email": email]
+            let values = ["name": name, "email": email, "points": 0] as [String : Any]
             usersRef.updateChildValues(values, withCompletionBlock: { (err, ref) in
                 
                 if err != nil {

@@ -221,11 +221,15 @@ class MetaInfoInputViewController: UIViewController {
     
     func saveDataIntoDatabaseWith(uid: String, values: [String: Any]) {
         //Saving user to database
-        let ref = FIRDatabase.database().reference(fromURL: "https://hsaampelapp.firebaseio.com/")
-        let usersRef = ref.child("lights").child(uid)
+        let ref = FIRDatabase.database().reference()
         
-        usersRef.updateChildValues(values, withCompletionBlock: { (err, ref) in
-            
+        var childUpdates = ["/lights/\(uid)": values]
+        
+        if let userDict = UserInformation.shared.getUserDictionary(addToPoints: 1) {
+            childUpdates["/users/\(UserInformation.shared.getUid() ?? "")"] = userDict
+        }
+        
+        ref.updateChildValues(childUpdates) { (err, ref) in
             if err != nil {
                 print(err!)
                 return
@@ -233,9 +237,7 @@ class MetaInfoInputViewController: UIViewController {
             
             print("Saved product successfully into Firebase db")
             self.navigationController?.popToRootViewController(animated: true)
-            
-        })
-
+        }
     }
     
     @objc private func undoBtnPressed() {
