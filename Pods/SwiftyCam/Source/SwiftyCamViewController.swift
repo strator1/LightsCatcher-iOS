@@ -259,30 +259,60 @@ open class SwiftyCamViewController: UIViewController {
     override open func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+//        // Set background audio preference
+//        
+//        setBackgroundAudioPreference()
+//        
+//        sessionQueue.async {
+//            switch self.setupResult {
+//                case .success:
+//                    // Begin Session
+//                    self.session.startRunning()
+//                    self.isSessionRunning = self.session.isRunning
+//                case .notAuthorized:
+//                    // Prompt to App Settings
+//                    self.promptToAppSettings()
+//                case .configurationFailed:
+//                    // Unknown Error
+//                    DispatchQueue.main.async(execute: { [unowned self] in
+//                        let message = NSLocalizedString("Unable to capture media", comment: "Alert message when something goes wrong during capture session configuration")
+//                        let alertController = UIAlertController(title: "AVCam", message: message, preferredStyle: .alert)
+//                        alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Alert OK button"), style: .cancel, handler: nil))
+//                        self.present(alertController, animated: true, completion: nil)
+//                })
+//            }
+//        }
+    }
+    
+    open override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         // Set background audio preference
         
         setBackgroundAudioPreference()
         
         sessionQueue.async {
             switch self.setupResult {
-                case .success:
-                    // Begin Session
-                    self.session.startRunning()
-                    self.isSessionRunning = self.session.isRunning
-                case .notAuthorized:
-                    // Prompt to App Settings
-                    self.promptToAppSettings()
-                case .configurationFailed:
-                    // Unknown Error
-                    DispatchQueue.main.async(execute: { [unowned self] in
-                        let message = NSLocalizedString("Unable to capture media", comment: "Alert message when something goes wrong during capture session configuration")
-                        let alertController = UIAlertController(title: "AVCam", message: message, preferredStyle: .alert)
-                        alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Alert OK button"), style: .cancel, handler: nil))
-                        self.present(alertController, animated: true, completion: nil)
+            case .success:
+                // Begin Session
+                self.session.startRunning()
+                self.isSessionRunning = self.session.isRunning
+            case .notAuthorized:
+                // Prompt to App Settings
+                self.promptToAppSettings()
+            case .configurationFailed:
+                // Unknown Error
+                DispatchQueue.main.async(execute: { [unowned self] in
+                    let message = NSLocalizedString("Unable to capture media", comment: "Alert message when something goes wrong during capture session configuration")
+                    let alertController = UIAlertController(title: "AVCam", message: message, preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Alert OK button"), style: .cancel, handler: nil))
+                    self.present(alertController, animated: true, completion: nil)
                 })
             }
         }
+
     }
+    
     
     // MARK: ViewDidDisappear
     

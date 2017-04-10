@@ -11,15 +11,21 @@ import Firebase
 
 class MetaInfoInputViewController: UIViewController {
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     lazy var backButton: UIView = {
         let btn = UIButton(type: .system)
+        btn.backgroundColor = .white
         btn.layer.cornerRadius = 5
         btn.layer.masksToBounds = true
-        btn.backgroundColor = .white
+
+        btn.layer.borderColor = UIColor.black.cgColor
+        btn.layer.borderWidth = 0.4
         
-        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        btn.setTitle("Back", for: .normal)
-        btn.setTitleColor(.black, for: .normal)
+        btn.setImage(#imageLiteral(resourceName: "Back Filled-50"), for: .normal)
+        btn.tintColor = .black
         btn.translatesAutoresizingMaskIntoConstraints = false
         
         btn.addTarget(self, action: #selector(backBtnPressed), for: .touchUpInside)
@@ -34,11 +40,12 @@ class MetaInfoInputViewController: UIViewController {
         let btn = UIButton(type: .system)
         btn.layer.cornerRadius = 5
         btn.layer.masksToBounds = true
-        btn.backgroundColor = .white
+        btn.layer.borderColor = UIColor.black.cgColor
+        btn.layer.borderWidth = 0.4
         
-        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        btn.setTitle("Undo", for: .normal)
-        btn.setTitleColor(.black, for: .normal)
+        btn.backgroundColor = .white
+         btn.setImage(#imageLiteral(resourceName: "Undo Filled-50"), for: .normal)
+        btn.tintColor = .black
         btn.translatesAutoresizingMaskIntoConstraints = false
         
         btn.addTarget(self, action: #selector(undoBtnPressed), for: .touchUpInside)
@@ -54,6 +61,8 @@ class MetaInfoInputViewController: UIViewController {
         btn.layer.cornerRadius = 5
         btn.layer.masksToBounds = true
         btn.backgroundColor = .white
+        btn.layer.borderColor = UIColor.black.cgColor
+        btn.layer.borderWidth = 0.4
         
         btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         btn.setTitle("Bild hochladen", for: .normal)
@@ -67,11 +76,41 @@ class MetaInfoInputViewController: UIViewController {
         return btn
     }()
     
+    lazy var helpButton: UIView = {
+        let btn = UIButton(type: UIButtonType.infoLight)
+        btn.backgroundColor = .white
+        btn.layer.cornerRadius = 5
+        btn.layer.masksToBounds = true
+        
+        btn.layer.borderColor = UIColor.black.cgColor
+        btn.layer.borderWidth = 0.4
+        
+//        btn.setImage(#imageLiteral(resourceName: "Back Filled-50"), for: .normal)
+        btn.tintColor = .black
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        
+        btn.addTarget(self, action: #selector(helpBtnPressed), for: .touchUpInside)
+        btn.isEnabled = true
+        btn.alpha = 1.0
+        
+        return btn
+        
+    }()
+    
     let backgroundImageView: UIImageView = {
         let iv = UIImageView()
         iv.backgroundColor = .green
-        iv.contentMode = .scaleAspectFit
+        iv.contentMode = .scaleToFill
         return iv
+    }()
+    
+    let titleLabel: UILabel = {
+       let l = UILabel()
+        l.textAlignment = .center
+        l.font = UIFont.boldSystemFont(ofSize: 24)
+        l.adjustsFontSizeToFitWidth = true
+        l.text = "Test"
+        return l
     }()
     
     var bivGestureRecognizer: UIGestureRecognizer?
@@ -101,41 +140,66 @@ class MetaInfoInputViewController: UIViewController {
     }
     
     func setupViews() {
+        
+        
         view.addSubview(backgroundImageView)
         backgroundImageView.anchor(view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 00, widthConstant: 0, heightConstant: 0)
         
         view.addSubview(backButton)
-        backButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 22).isActive = true
+        backButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 12).isActive = true
         backButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 12).isActive = true
-        backButton.heightAnchor.constraint(equalToConstant: 64).isActive = true
-        backButton.widthAnchor.constraint(equalToConstant: 64).isActive = true
+        backButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        backButton.widthAnchor.constraint(equalToConstant: 48).isActive = true
         
         view.addSubview(undoButton)
-        undoButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 22).isActive = true
+        undoButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 12).isActive = true
         undoButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -12).isActive = true
-        undoButton.heightAnchor.constraint(equalToConstant: 64).isActive = true
-        undoButton.widthAnchor.constraint(equalToConstant: 64).isActive = true
+        undoButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        undoButton.widthAnchor.constraint(equalToConstant: 48).isActive = true
+        
+        view.addSubview(titleLabel)
+        titleLabel.anchor(view.topAnchor, left: backButton.rightAnchor, bottom: nil, right: undoButton.leftAnchor, topConstant: 12, leftConstant: 12, bottomConstant: 0, rightConstant: 12, widthConstant: 0, heightConstant: 48)
+
+        view.addSubview(helpButton)
+        helpButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -12).isActive = true
+        helpButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 12).isActive = true
+        helpButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        helpButton.widthAnchor.constraint(equalToConstant: 48).isActive = true
         
         view.addSubview(sendButton)
-        sendButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        sendButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -12).isActive = true
+        sendButton.leftAnchor.constraint(equalTo: helpButton.rightAnchor, constant: 12).isActive = true
         sendButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -12).isActive = true
-        sendButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -24).isActive = true
-        sendButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        sendButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
         
         bivGestureRecognizer = UIGestureRecognizer()
         bivGestureRecognizer?.delegate = self
         
-        backgroundImageView.addGestureRecognizer(bivGestureRecognizer!)
+        let rec = UITapGestureRecognizer(target: self, action: #selector(onTap))
+        view.addGestureRecognizer(rec)
         
+        backgroundImageView.addGestureRecognizer(bivGestureRecognizer!)
+    
+        setTitleText()
+        
+    }
+    
+    func setTitleText() {
+        let attributes = [NSForegroundColorAttributeName: UIColor.white, NSStrokeWidthAttributeName: -2, NSStrokeColorAttributeName: UIColor.black] as [String : Any]
+        titleLabel.attributedText = NSAttributedString(string: "🚦 markieren", attributes: attributes)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        if UserDefaults.isFirstAmpelCapture() {
+            helpBtnPressed()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: true)
+        navigationController?.setNavigationBarHidden(true, animated: false)
         
         guard let image = photoInformation?.image else { return }
         
@@ -145,6 +209,15 @@ class MetaInfoInputViewController: UIViewController {
     
     @objc private func backBtnPressed() {
         navigationController?.popViewController(animated: true)
+    }
+    
+    @objc fileprivate func helpBtnPressed() {
+        let alertController = UIAlertController(title: "Erste Hilfe", message: "Markiere per Tap auf den Bildschirm alle Ampeln, die auf dem Bild zu sehen sind.", preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "Verstanden 👌", style: .cancel, handler: nil)
+        
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
     }
     
     @objc private func sendBtnPressed() {
@@ -240,7 +313,7 @@ class MetaInfoInputViewController: UIViewController {
         }
     }
     
-    @objc private func undoBtnPressed() {
+    @objc fileprivate func undoBtnPressed() {
         guard let pos = insertedNodes.last else { return }
         print(insertedNodes.count)
         pos.view.removeFromSuperview()
@@ -257,10 +330,6 @@ extension MetaInfoInputViewController: UIGestureRecognizerDelegate {
             touchLocation = touch.location(in: backgroundImageView)
             
             pickedNodes = getNodes(atLocation: touchLocation)
-            
-            if pickedNodes.count == 0 {
-                createView(atLocation: touchLocation)
-            }
         }
     }
     
@@ -281,6 +350,10 @@ extension MetaInfoInputViewController: UIGestureRecognizerDelegate {
         pickedNodes = [LightPosition]()
     }
     
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+    
     func createView(atLocation location: CGPoint) {
         if insertedNodes.count <= 2 {
             let newView = UIView()
@@ -299,7 +372,7 @@ extension MetaInfoInputViewController: UIGestureRecognizerDelegate {
             pos.setPos(atPoint: location)
             insertedNodes.append(pos)
             
-            showLightPhaseActionSheet(newPos: pos)
+            showLightPhaseActionSheet(newPos: pos, isNew: true)
             
         }
     }
@@ -307,13 +380,23 @@ extension MetaInfoInputViewController: UIGestureRecognizerDelegate {
     func onLongPress(_ sender: UILongPressGestureRecognizer) {
         for pos in insertedNodes {
             if pos.view == sender.view {
-                showLightPhaseActionSheet(newPos: pos)
+                showLightPhaseActionSheet(newPos: pos, isNew: false)
                 break
             }
         }
     }
     
-    func showLightPhaseActionSheet(newPos: LightPosition) {
+    func onTap(_ rec: UIGestureRecognizer) {
+        if rec.numberOfTouches > 0 {
+            let loc = rec.location(ofTouch: 0, in: backgroundImageView)
+            
+            if getNodes(atLocation: loc).count == 0 {
+                createView(atLocation: loc)
+            }
+        }
+    }
+    
+    func showLightPhaseActionSheet(newPos: LightPosition, isNew: Bool) {
         let alertController = UIAlertController(title: "🚦", message: "Rot oder Grünphase?", preferredStyle: .actionSheet)
         
         let redPhaseButton = UIAlertAction(title: "Rot", style: .default, handler: { (action) -> Void in
@@ -326,8 +409,29 @@ extension MetaInfoInputViewController: UIGestureRecognizerDelegate {
             newPos.phase = .green
         })
         
+        let canelButton = UIAlertAction(title: "Abbrechen", style: .cancel, handler: { (action) -> Void in
+            if isNew {
+                self.undoBtnPressed()
+            }
+        })
+        
+        let deleteButton = UIAlertAction(title: "Löschen", style: .destructive, handler: { (action) -> Void in
+            let index = self.insertedNodes.index(where: { $0 === newPos })
+            if index != nil {
+                newPos.view.removeFromSuperview()
+                self.insertedNodes.remove(at: index!)
+            }
+        })
+
+        
         alertController.addAction(redPhaseButton)
         alertController.addAction(greenPhaseButton)
+        alertController.addAction(canelButton)
+        
+        if !isNew {
+          alertController.addAction(deleteButton)
+        }
+        
         
         present(alertController, animated: true, completion: nil)
 

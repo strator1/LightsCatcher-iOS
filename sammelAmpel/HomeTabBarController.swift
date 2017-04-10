@@ -19,7 +19,7 @@ class HomeTabBarController: UITabBarController, UITabBarControllerDelegate {
         let btn = UIButton(type: .system)
         
         btn.setImage(#imageLiteral(resourceName: "Screenshot-50"), for: .normal)
-        btn.translatesAutoresizingMaskIntoConstraints = false
+//        btn.translatesAutoresizingMaskIntoConstraints = false
         
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 12)
         btn.titleLabel?.adjustsFontSizeToFitWidth = true
@@ -38,9 +38,14 @@ class HomeTabBarController: UITabBarController, UITabBarControllerDelegate {
         rankingViewController.tabBarItem.tag = 0
         
         viewControllers = [rankingViewController]
-        
+        view.addSubview(cameraButton)
         setupMiddleButton()
         selectedViewController = rankingViewController
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupMiddleButton()
     }
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
@@ -57,7 +62,7 @@ class HomeTabBarController: UITabBarController, UITabBarControllerDelegate {
         menuButtonFrame.origin.x = view.bounds.width/2 - menuButtonFrame.size.width/2
         cameraButton.frame = menuButtonFrame
         
-        view.addSubview(cameraButton)
+        
         
         cameraButton.centerImageAndTitle(withSpacing: 4)
         

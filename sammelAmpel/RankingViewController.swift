@@ -41,7 +41,7 @@ class RankingViewController: DatasourceController {
         // Do any additional setup after loading the view, typically from a nib.
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "Settings-50"), style: .plain, target: self, action:  #selector(handleSettingsBtnPressed))
-        navigationItem.title = "Lights Catcher"
+        navigationItem.title = "🚦Lights Catcher"
         
         collectionView?.backgroundColor = .backgroundGray
         collectionView?.allowsSelection = false
@@ -56,14 +56,18 @@ class RankingViewController: DatasourceController {
         
         if !UserInformation.shared.isLoggedIn() {
             perform(#selector(handleLogout), with: nil, afterDelay: 0)
-        } else {
-            datasource = rankingDatasource
         }
+
+        datasource = rankingDatasource
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        fetchRanking()
+        if UserInformation.shared.isLoggedIn() {
+            fetchRanking()
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

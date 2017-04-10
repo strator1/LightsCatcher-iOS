@@ -13,6 +13,7 @@ target 'sammelAmpel' do
   pod 'LBTAComponents', '~> 0.1.9'
   pod 'SwiftMoment'
   pod "SwiftyCam"
+  pod 'SVProgressHUD'
 
   target 'sammelAmpelTests' do
     inherit! :search_paths

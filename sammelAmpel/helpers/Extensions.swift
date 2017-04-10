@@ -8,6 +8,28 @@
 
 import UIKit
 
+extension UserDefaults {
+    static func isFirstLaunch() -> Bool {
+        let hasBeenLaunchedBeforeFlag = "hasBeenLaunchedBeforeFlag"
+        let isFirstLaunch = !UserDefaults.standard.bool(forKey: hasBeenLaunchedBeforeFlag)
+        if (isFirstLaunch) {
+            UserDefaults.standard.set(true, forKey: hasBeenLaunchedBeforeFlag)
+            UserDefaults.standard.synchronize()
+        }
+        return isFirstLaunch
+    }
+    
+    static func isFirstAmpelCapture() -> Bool {
+        let key = "isFirstAmpelCapture"
+        let isFirstAmpelCapture = !UserDefaults.standard.bool(forKey: key)
+        if (isFirstAmpelCapture) {
+            UserDefaults.standard.set(true, forKey: key)
+            UserDefaults.standard.synchronize()
+        }
+        return isFirstAmpelCapture
+    }
+}
+
 extension UIViewController {
     
     func addHideKeyboardTap() {
@@ -38,7 +60,7 @@ extension UIButton {
         if let imageSize = imageSize, let titleSize = titleSize {
             let totalHeight = imageSize.height + titleSize.height + spacing
             
-            self.imageEdgeInsets = UIEdgeInsetsMake(-(totalHeight - imageSize.height), 6, 0, -titleSize.width)
+            self.imageEdgeInsets = UIEdgeInsetsMake(-(totalHeight - imageSize.height), 2, 0, -titleSize.width)
 
             self.titleEdgeInsets = UIEdgeInsetsMake(0, -imageSize.width, -(totalHeight - titleSize.height), 0)
         }

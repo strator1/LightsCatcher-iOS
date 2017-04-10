@@ -174,7 +174,7 @@ class RankingCell: DatasourceCell {
             if let item = datasourceItem as? Rank {
                 self.rank = item
                 nameLabel.text = item.name
-                positionLabel.text = "\(item.position.description)."
+                positionLabel.text = item.getPositionText()
                 pointsLabel.text = "\(item.points.description) Punkte"
 
                 topDividerLineView.isHidden = item.position == 1 ? true : false

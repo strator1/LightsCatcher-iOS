@@ -14,15 +14,21 @@ import LBTAComponents
 
 class AddPhotoViewController: SwiftyCamViewController, SwiftyCamViewControllerDelegate {
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     lazy var closeButton: UIView = {
         let btn = UIButton(type: .system)
         btn.layer.cornerRadius = 5
         btn.layer.masksToBounds = true
         btn.backgroundColor = .white
+        btn.tintColor = .black
         
-        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        btn.setTitle("Close", for: .normal)
-        btn.setTitleColor(.black, for: .normal)
+        btn.layer.borderColor = UIColor.black.cgColor
+        btn.layer.borderWidth = 0.4
+        
+        btn.setImage(#imageLiteral(resourceName: "Delete Filled-50"), for: .normal)
         btn.translatesAutoresizingMaskIntoConstraints = false
         
         btn.addTarget(self, action: #selector(closeBtnPressed), for: .touchUpInside)
@@ -37,12 +43,15 @@ class AddPhotoViewController: SwiftyCamViewController, SwiftyCamViewControllerDe
         let btn = UIButton(type: .system)
         btn.layer.cornerRadius = 5
         btn.layer.masksToBounds = true
-        btn.backgroundColor = .green
+        btn.backgroundColor = .white
+        btn.tintColor = .black
         
         btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        btn.setTitle("Take", for: .normal)
-        btn.setTitleColor(.white, for: .normal)
+        btn.setImage(#imageLiteral(resourceName: "Screenshot-50"), for: .normal)
         btn.translatesAutoresizingMaskIntoConstraints = false
+        
+        btn.layer.borderColor = UIColor.black.cgColor
+        btn.layer.borderWidth = 0.4
         
         btn.addTarget(self, action: #selector(capturePhotoBtnPressed), for: .touchUpInside)
         btn.isEnabled = true
@@ -50,6 +59,21 @@ class AddPhotoViewController: SwiftyCamViewController, SwiftyCamViewControllerDe
         
         return btn
 
+    }()
+    
+    let titleLabel: UILabel = {
+        let l = UILabel()
+        l.textAlignment = .center
+        l.font = UIFont.boldSystemFont(ofSize: 24)
+        l.adjustsFontSizeToFitWidth = true
+        l.text = "Test"
+        return l
+    }()
+    
+    let bottomContainerView: UIView = {
+        let v = UIView()
+        v.backgroundColor = .black
+        return v
     }()
     
     let motionManager = CMMotionManager()
@@ -67,24 +91,55 @@ class AddPhotoViewController: SwiftyCamViewController, SwiftyCamViewControllerDe
         pinchToZoom = false
         cameraDelegate = self
         
-        view.addSubview(closeButton)
-        closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 22).isActive = true
-        closeButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 12).isActive = true
-        closeButton.heightAnchor.constraint(equalToConstant: 64).isActive = true
-        closeButton.widthAnchor.constraint(equalToConstant: 64).isActive = true
+        setupViews()
         
-        view.addSubview(captureButton)
-        captureButton.anchor(nil, left: nil, bottom: view.bottomAnchor, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 12, rightConstant: 0, widthConstant: 64, heightConstant: 64)
-        captureButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
     }
     
+    func setupViews() {
+        view.addSubview(bottomContainerView)
+        bottomContainerView.anchor(nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 100)
+        
+        bottomContainerView.addSubview(captureButton)
+        captureButton.anchor(bottomContainerView.topAnchor, left: nil, bottom: bottomContainerView.bottomAnchor, right: nil, topConstant: 8, leftConstant: 0, bottomConstant: 8, rightConstant: 0, widthConstant: 0, heightConstant: 0)
+        captureButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        captureButton.widthAnchor.constraint(equalTo: captureButton.heightAnchor, multiplier: 1).isActive = true
+        
+        view.addSubview(closeButton)
+        closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 12).isActive = true
+        closeButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 12).isActive = true
+        closeButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        closeButton.widthAnchor.constraint(equalToConstant: 48).isActive = true
+        
+        view.addSubview(titleLabel)
+        titleLabel.anchor(view.topAnchor, left: closeButton.rightAnchor, bottom: nil, right: view.rightAnchor, topConstant: 12, leftConstant: 12, bottomConstant: 0, rightConstant: 72, widthConstant: 0, heightConstant: 48)
+        
+        setTitleText()
+        
+    }
+    
+    func setTitleText() {
+        let attributes = [NSForegroundColorAttributeName: UIColor.white, NSStrokeWidthAttributeName: -2, NSStrokeColorAttributeName: UIColor.black] as [String : Any]
+        titleLabel.attributedText = NSAttributedString(string: "🚦 fotografieren", attributes: attributes)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        captureButton.layer.cornerRadius = 0.5 * captureButton.bounds.size.width
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: false)
+        
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
