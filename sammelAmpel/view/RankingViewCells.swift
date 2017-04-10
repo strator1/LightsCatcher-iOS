@@ -24,14 +24,24 @@ class OverviewHeaderCell: DatasourceCell, UICollectionViewDelegate, UICollection
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 0
 
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = .purple
+        cv.showsHorizontalScrollIndicator = false
         cv.isPagingEnabled = true
         cv.delegate = self
         cv.dataSource = self
         
         return cv
+    }()
+    
+    let pageControl: UIPageControl = {
+       let pc = UIPageControl()
+        pc.pageIndicatorTintColor = .lightGray
+        pc.currentPageIndicatorTintColor = .red
+        pc.numberOfPages = 2
+        return pc
     }()
     
     let cellId = "cellId"
@@ -50,8 +60,11 @@ class OverviewHeaderCell: DatasourceCell, UICollectionViewDelegate, UICollection
         
         addSubview(collectionView)
         addSubview(bottomDividerLineView)
+        addSubview(pageControl)
         
         collectionView.register(OverviewHeaderDataCell.self, forCellWithReuseIdentifier: cellId)
+        
+        pageControl.anchor(nil, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 30)
         
         collectionView.anchor(topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
         
@@ -82,10 +95,22 @@ class OverviewHeaderCell: DatasourceCell, UICollectionViewDelegate, UICollection
             }
             
         } else {
-            cell.backgroundColor = .red
+            cell.backgroundColor = .white
+            cell.titleLabel.text = "Projekt- + Challengeinformationen"
         }
         
         return cell
+    }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let pageNumber = Int(targetContentOffset.pointee.x / frame.width)
+        
+        if pageNumber == 0 {
+            pageControl.currentPageIndicatorTintColor = .red
+        } else if pageNumber == 1 {
+            pageControl.currentPageIndicatorTintColor = .green
+        }
+        pageControl.currentPage = pageNumber
     }
     
 }
@@ -101,7 +126,7 @@ class OverviewHeaderDataCell: DatasourceCell {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "SectionTitle"
+        label.text = ""
         label.font = .boldSystemFont(ofSize: 18)
         return label
     }()

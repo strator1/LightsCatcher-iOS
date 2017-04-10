@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SVProgressHUD
 
 class MetaInfoInputViewController: UIViewController {
     
@@ -222,6 +223,7 @@ class MetaInfoInputViewController: UIViewController {
     
     @objc private func sendBtnPressed() {
         photoInformation?.lights = insertedNodes
+        showProgressIndicator()
         
         if let image = photoInformation?.image {
             let imageName = NSUUID().uuidString
@@ -231,6 +233,7 @@ class MetaInfoInputViewController: UIViewController {
                 storageRef.put(uploadData, metadata: nil, completion: { (metadata, error) in
                     
                     if error != nil {
+                        self.showProgressError(withMessage: "Uploadfehler")
                         print(error!)
                         return
                     }
@@ -292,6 +295,22 @@ class MetaInfoInputViewController: UIViewController {
 
     }
     
+    func showProgressIndicator() {
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+        SVProgressHUD.show(withStatus: "Uploading")
+        view.isUserInteractionEnabled = false
+    }
+    
+    func showProgressError(withMessage: String) {
+        SVProgressHUD.showError(withStatus: withMessage)
+        hideProgressIndictator(withDelay: 1)
+    }
+    
+    func hideProgressIndictator(withDelay: TimeInterval) {
+        SVProgressHUD.dismiss(withDelay: withDelay)
+        view.isUserInteractionEnabled = true
+    }
+    
     func saveDataIntoDatabaseWith(uid: String, values: [String: Any]) {
         //Saving user to database
         let ref = FIRDatabase.database().reference()
@@ -304,12 +323,18 @@ class MetaInfoInputViewController: UIViewController {
         
         ref.updateChildValues(childUpdates) { (err, ref) in
             if err != nil {
+                self.showProgressError(withMessage: "Uploadfehler")
                 print(err!)
                 return
             }
             
             print("Saved product successfully into Firebase db")
-            self.navigationController?.popToRootViewController(animated: true)
+            SVProgressHUD.showSuccess(withStatus: "Upload erfolgreich!")
+            self.hideProgressIndictator(withDelay: 1)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.navigationController?.popToRootViewController(animated: true)
+            }
+
         }
     }
     
@@ -358,6 +383,8 @@ extension MetaInfoInputViewController: UIGestureRecognizerDelegate {
         if insertedNodes.count <= 2 {
             let newView = UIView()
             newView.backgroundColor = .red
+            newView.layer.cornerRadius = 4
+            newView.layer.masksToBounds = true
             
             let rec = UITapGestureRecognizer(target: self, action: #selector(onLongPress(_:)))
             newView.addGestureRecognizer(rec)

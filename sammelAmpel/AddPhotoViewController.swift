@@ -176,6 +176,7 @@ class AddPhotoViewController: SwiftyCamViewController, SwiftyCamViewControllerDe
     }
     
     @objc private func capturePhotoBtnPressed() {
+        view.isUserInteractionEnabled = false
         photoInformation = PhotoInformation(image: nil, lights: nil, lightCount: nil, gyroPosition: nil, latitude: nil, longitude: nil)
         
         //print(motionManager.attitude.pitch)
@@ -201,6 +202,7 @@ class AddPhotoViewController: SwiftyCamViewController, SwiftyCamViewControllerDe
         let nextVc = MetaInfoInputViewController()
         nextVc.photoInformation = photoInformation
         
+        view.isUserInteractionEnabled = true
         navigationController?.pushViewController(nextVc, animated: true)
     }
     
