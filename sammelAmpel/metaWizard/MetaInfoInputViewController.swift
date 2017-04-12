@@ -114,6 +114,11 @@ class MetaInfoInputViewController: UIViewController {
         return l
     }()
     
+    lazy var focusView: FocusView = {
+        let view = FocusView()
+        return view
+    }()
+    
     var bivGestureRecognizer: UIGestureRecognizer?
     var touchLocation = CGPoint()
     var pickedNodes = [LightPosition]()
@@ -182,6 +187,13 @@ class MetaInfoInputViewController: UIViewController {
         backgroundImageView.addGestureRecognizer(bivGestureRecognizer!)
     
         setTitleText()
+        
+        view.addSubview(focusView)
+        view.bringSubview(toFront: focusView)
+        
+        if let focusOrigin = photoInformation?.focusPos {
+           focusView.frame = CGRect(x: focusOrigin.x, y: focusOrigin.y, width: PhotoInformation.FOCUS_WIDTH, height: PhotoInformation.FOCUS_HEIGHT)
+        }
         
     }
     

@@ -11,6 +11,9 @@ import CoreLocation
 
 struct PhotoInformation {
     
+    static let FOCUS_HEIGHT: CGFloat = 100
+    static let FOCUS_WIDTH: CGFloat = 100
+    
     enum LightPhase: Int {
         case red = 0
         case green = 1
@@ -23,5 +26,7 @@ struct PhotoInformation {
     
     var latitude: CLLocationDegrees?
     var longitude: CLLocationDegrees?
+    
+    var focusPos: CGPoint?
     
 }

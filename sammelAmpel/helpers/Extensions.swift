@@ -8,6 +8,12 @@
 
 import UIKit
 
+public func randomNumber(range: ClosedRange<Int> = 1...6) -> Int {
+    let min = range.lowerBound
+    let max = range.upperBound
+    return Int(arc4random_uniform(UInt32(1 + max - min))) + min
+}
+
 extension UserDefaults {
     static func isFirstLaunch() -> Bool {
         let hasBeenLaunchedBeforeFlag = "hasBeenLaunchedBeforeFlag"

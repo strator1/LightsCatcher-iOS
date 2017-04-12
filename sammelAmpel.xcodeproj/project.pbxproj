@@ -17,6 +17,7 @@
 		A30129FE1E92A86900B45EB1 /* sammelAmpelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30129FD1E92A86900B45EB1 /* sammelAmpelTests.swift */; };
 		A3012A091E92A86900B45EB1 /* sammelAmpelUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3012A081E92A86900B45EB1 /* sammelAmpelUITests.swift */; };
 		A3012A171E92A90B00B45EB1 /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3012A161E92A90B00B45EB1 /* HomeTabBarController.swift */; };
+		A385FC0A1E9E09DD00822BC9 /* FocusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A385FC091E9E09DD00822BC9 /* FocusView.swift */; };
 		A38F45981E93EED000646FF1 /* PhotoInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38F45971E93EED000646FF1 /* PhotoInformation.swift */; };
 		A38F459B1E93F11800646FF1 /* MetaInfoInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38F459A1E93F11800646FF1 /* MetaInfoInputViewController.swift */; };
 		A38F459D1E9426A700646FF1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A38F459C1E9426A700646FF1 /* GoogleService-Info.plist */; };
@@ -67,6 +68,7 @@
 		A3012A081E92A86900B45EB1 /* sammelAmpelUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sammelAmpelUITests.swift; sourceTree = "<group>"; };
 		A3012A0A1E92A86900B45EB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A3012A161E92A90B00B45EB1 /* HomeTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
+		A385FC091E9E09DD00822BC9 /* FocusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusView.swift; sourceTree = "<group>"; };
 		A38F45971E93EED000646FF1 /* PhotoInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoInformation.swift; sourceTree = "<group>"; };
 		A38F459A1E93F11800646FF1 /* MetaInfoInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetaInfoInputViewController.swift; sourceTree = "<group>"; };
 		A38F459C1E9426A700646FF1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				A3FDD88A1E94E78B00FF9C69 /* RankingViewCells.swift */,
+				A385FC091E9E09DD00822BC9 /* FocusView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -539,6 +542,7 @@
 				A30129E61E92A86900B45EB1 /* AppDelegate.swift in Sources */,
 				A3FDD88B1E94E78B00FF9C69 /* RankingViewCells.swift in Sources */,
 				A3B09DEB1E92A9CB00ADB48F /* RankingViewController.swift in Sources */,
+				A385FC0A1E9E09DD00822BC9 /* FocusView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

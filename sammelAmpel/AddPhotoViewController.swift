@@ -61,6 +61,15 @@ class AddPhotoViewController: SwiftyCamViewController, SwiftyCamViewControllerDe
 
     }()
     
+    lazy var focusView: FocusView = {
+        let view = FocusView()
+        return view
+    }()
+    
+    var fvYAnchor: NSLayoutConstraint?
+    var fvXAnchor: NSLayoutConstraint?
+
+    
     let titleLabel: UILabel = {
         let l = UILabel()
         l.textAlignment = .center
@@ -117,8 +126,29 @@ class AddPhotoViewController: SwiftyCamViewController, SwiftyCamViewControllerDe
         view.addSubview(titleLabel)
         titleLabel.anchor(view.topAnchor, left: closeButton.rightAnchor, bottom: nil, right: view.rightAnchor, topConstant: 12, leftConstant: 12, bottomConstant: 0, rightConstant: 72, widthConstant: 0, heightConstant: 48)
         
+        view.addSubview(focusView)
+        view.bringSubview(toFront: focusView)
+        
+        fvXAnchor = focusView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0)
+        fvXAnchor?.isActive = true
+        
+        fvYAnchor = focusView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0)
+        fvYAnchor?.isActive = true
+        
+        focusView.heightAnchor.constraint(equalToConstant: PhotoInformation.FOCUS_HEIGHT).isActive = true
+        focusView.widthAnchor.constraint(equalToConstant: PhotoInformation.FOCUS_WIDTH).isActive = true
+        
         setTitleText()
         
+    }
+    
+    func getRandomXYOffsetForFocusView() -> CGPoint {
+        let minYPos = -Int(((view.frame.height - PhotoInformation.FOCUS_HEIGHT) / 2) - 60) // 60 is headerHeight
+        let yOffset = randomNumber(range: minYPos...0)
+        
+        let centerX = Int((view.frame.width - PhotoInformation.FOCUS_WIDTH) / 2)
+        let xOffset = randomNumber(range: -centerX ... centerX)
+        return CGPoint(x: xOffset, y: yOffset)
     }
     
     func setTitleText() {
@@ -135,6 +165,10 @@ class AddPhotoViewController: SwiftyCamViewController, SwiftyCamViewControllerDe
         super.viewWillAppear(animated)
         
         navigationController?.setNavigationBarHidden(true, animated: true)
+        
+        let focusViewOffset = getRandomXYOffsetForFocusView()
+        fvYAnchor?.constant = focusViewOffset.y
+        fvXAnchor?.constant = focusViewOffset.x
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -177,7 +211,9 @@ class AddPhotoViewController: SwiftyCamViewController, SwiftyCamViewControllerDe
     
     @objc private func capturePhotoBtnPressed() {
         view.isUserInteractionEnabled = false
-        photoInformation = PhotoInformation(image: nil, lights: nil, lightCount: nil, gyroPosition: nil, latitude: nil, longitude: nil)
+        photoInformation = PhotoInformation(image: nil, lights: nil, lightCount: nil, gyroPosition: nil, latitude: nil, longitude: nil, focusPos: nil)
+        
+        photoInformation?.focusPos = focusView.frame.origin
         
         //print(motionManager.attitude.pitch)
         if let radians = deviceMotion?.attitude.pitch {
