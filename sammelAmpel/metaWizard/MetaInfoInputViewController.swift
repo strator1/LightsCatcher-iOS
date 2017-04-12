@@ -227,9 +227,10 @@ class MetaInfoInputViewController: UIViewController {
         
         if let image = photoInformation?.image {
             let imageName = NSUUID().uuidString
-            let storageRef = FIRStorage.storage().reference().child("lights_images").child("\(imageName).jpg")
+            let storageRef = FIRStorage.storage().reference().child("lights_images").child("\(imageName)jpg")
             
             if let uploadData = UIImageJPEGRepresentation(image, 0.4) {
+                convertMarkersToAbsolutePosition()
                 storageRef.put(uploadData, metadata: nil, completion: { (metadata, error) in
                     
                     if error != nil {
@@ -476,6 +477,14 @@ extension MetaInfoInputViewController: UIGestureRecognizerDelegate {
         return nodes
     }
     
+    func convertMarkersToAbsolutePosition() {
+        guard let image = photoInformation?.image else { return }
+        
+        for marker in insertedNodes {
+            marker.convertXYtoAbsImagePos(iv: backgroundImageView, img: image)
+        }
+    }
+    
 }
 
 class LightPosition {
@@ -494,6 +503,14 @@ class LightPosition {
         
         self.x = point.x
         self.y = point.y
+    }
+    
+    func convertXYtoAbsImagePos(iv: UIImageView, img: UIImage) {
+        let percentX = self.x! / iv.frame.size.width
+        let percentY = self.y! / iv.frame.size.height
+        
+        self.x = img.size.width * percentX
+        self.y = img.size.height * percentY
     }
 }
 

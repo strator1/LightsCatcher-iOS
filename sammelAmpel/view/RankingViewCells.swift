@@ -27,7 +27,7 @@ class OverviewHeaderCell: DatasourceCell, UICollectionViewDelegate, UICollection
         layout.minimumLineSpacing = 0
 
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.backgroundColor = .purple
+        cv.backgroundColor = .backgroundGray
         cv.showsHorizontalScrollIndicator = false
         cv.isPagingEnabled = true
         cv.delegate = self
