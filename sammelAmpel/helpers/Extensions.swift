@@ -34,6 +34,16 @@ extension UserDefaults {
         }
         return isFirstAmpelCapture
     }
+    
+    static func isFirstAmpelTagging() -> Bool {
+        let key = "isFirstAmpelTaggin"
+        let isFirstAmpelTagging = !UserDefaults.standard.bool(forKey: key)
+        if (isFirstAmpelTagging) {
+            UserDefaults.standard.set(true, forKey: key)
+            UserDefaults.standard.synchronize()
+        }
+        return isFirstAmpelTagging
+    }
 }
 
 extension UIViewController {

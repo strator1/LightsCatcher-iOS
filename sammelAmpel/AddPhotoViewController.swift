@@ -224,6 +224,10 @@ class AddPhotoViewController: SwiftyCamViewController, SwiftyCamViewControllerDe
         }
         
         locationManager.startUpdatingLocation()
+        
+        if UserDefaults.isFirstAmpelTagging() {
+            self.helpBtnPressed()
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {

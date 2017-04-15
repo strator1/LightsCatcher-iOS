@@ -5,9 +5,9 @@
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>always</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>when in use</string>
+	<string>Im Fotomodus benutzen wir Deine momentane Location um Informationen über das Fußgängerampelnetz zu sammeln. Es wäre schön wenn du diese Information mit uns teilen könntest.</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>asdfsfasdfa</string>
+	<string>Mikrofon brauchen wir nicht, müssen Dich aber kurz fragen. Sorry</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -27,7 +27,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>aasdfasflajslfasdf</string>
+	<string>📷 -&gt; 🚦</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
