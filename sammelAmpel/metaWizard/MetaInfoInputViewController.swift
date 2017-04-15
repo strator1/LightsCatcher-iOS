@@ -188,36 +188,39 @@ class MetaInfoInputViewController: UIViewController {
     
         setTitleText()
         
-        view.addSubview(focusView)
-        view.bringSubview(toFront: focusView)
-        
-        if let focusOrigin = photoInformation?.focusPos {
-           focusView.frame = CGRect(x: focusOrigin.x, y: focusOrigin.y, width: PhotoInformation.FOCUS_WIDTH, height: PhotoInformation.FOCUS_HEIGHT)
-        }
+//        view.addSubview(focusView)
+//        view.bringSubview(toFront: focusView)
+//        
+//        if let focusOrigin = photoInformation?.focusPos {
+//           focusView.frame = CGRect(x: focusOrigin.x, y: focusOrigin.y, width: PhotoInformation.FOCUS_WIDTH, height: PhotoInformation.FOCUS_HEIGHT)
+//        }
         
     }
     
     func setTitleText() {
         let attributes = [NSForegroundColorAttributeName: UIColor.white, NSStrokeWidthAttributeName: -2, NSStrokeColorAttributeName: UIColor.black] as [String : Any]
-        titleLabel.attributedText = NSAttributedString(string: "🚦 markieren", attributes: attributes)
+        titleLabel.attributedText = NSAttributedString(string: "🚦 Markieren", attributes: attributes)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if UserDefaults.isFirstAmpelCapture() {
-            helpBtnPressed()
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
         
-        guard let image = photoInformation?.image else { return }
+        guard let image = photoInformation?.image, let focusPos = photoInformation?.focusPos else { return }
         
         backgroundImageView.image = image
-        print("set")
+        
+        // Create new isRelevant lightPos and insert it in insertedNodes
+        let pos = LightPosition(view: UIView())
+        pos.setPos(atPoint: focusPos)
+        pos.isMostRelevant = true
+        
+        createView(atLocation: .zero, existingPos: pos)
     }
     
     @objc private func backBtnPressed() {
@@ -225,7 +228,7 @@ class MetaInfoInputViewController: UIViewController {
     }
     
     @objc fileprivate func helpBtnPressed() {
-        let alertController = UIAlertController(title: "Erste Hilfe", message: "Markiere per Tap auf den Bildschirm alle Ampeln, die auf dem Bild zu sehen sind.", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Erste Hilfe", message: "Markiere per Tap auf den Bildschirm neben der fotografierten alle anderen Ampeln, die auf dem Bild zu sehen sind.\n\n Gelber Rand steht für die momentan relevante Ampel.", preferredStyle: .alert)
         
         let okAction = UIAlertAction(title: "Verstanden 👌", style: .cancel, handler: nil)
         
@@ -392,29 +395,62 @@ extension MetaInfoInputViewController: UIGestureRecognizerDelegate {
         return true
     }
     
-    func createView(atLocation location: CGPoint) {
-        if insertedNodes.count <= 2 {
-            let newView = UIView()
-            newView.backgroundColor = .red
-            newView.layer.cornerRadius = 4
-            newView.layer.masksToBounds = true
+    func createView(atLocation location: CGPoint, existingPos: LightPosition?) {
+        if insertedNodes.count >= 3 {
+            return;
+        }
+        
+        let newView = UIView()
+        newView.backgroundColor = .red
+        newView.layer.cornerRadius = 4
+        newView.layer.masksToBounds = true
+        
+        let rec = UITapGestureRecognizer(target: self, action: #selector(onLongPress(_:)))
+        newView.addGestureRecognizer(rec)
+        
+        var pos: LightPosition!
+        
+        if let existingPos = existingPos {
+            var frame = CGRect(origin: CGPoint.zero, size: CGSize(width: LightPosition.WIDTH, height: LightPosition.HEIGHT))
+            existingPos.x = existingPos.x! - (LightPosition.WIDTH / 2)
+            existingPos.y = existingPos.y! - (LightPosition.HEIGHT / 2)
             
-            let rec = UITapGestureRecognizer(target: self, action: #selector(onLongPress(_:)))
-            newView.addGestureRecognizer(rec)
-            
-            let frame = CGRect(origin: location, size: CGSize(width: 30, height: 30))
+            frame.origin.x = existingPos.x!
+            frame.origin.y = existingPos.y!
             newView.frame = frame
             
-            view.addSubview(newView)
-            view.layoutIfNeeded()
-        
-            let pos = LightPosition(view: newView)
+            existingPos.view = newView
+            pos = existingPos
+        } else {
+            let frame = CGRect(origin: location, size: CGSize(width: LightPosition.WIDTH, height: LightPosition.HEIGHT))
+            newView.frame = frame
+
+            pos = LightPosition(view: newView)
             pos.setPos(atPoint: location)
-            insertedNodes.append(pos)
             
-            showLightPhaseActionSheet(newPos: pos, isNew: true)
+            var mostRelevantExists = false
             
+            for pos in insertedNodes {
+                if pos.isMostRelevant {
+                    mostRelevantExists = true
+                    break
+                }
+            }
+            
+            pos.isMostRelevant = !mostRelevantExists
         }
+        
+        if pos.isMostRelevant {
+            newView.layer.borderWidth = 3
+            newView.layer.borderColor = UIColor.yellow.cgColor
+        }
+        
+        view.addSubview(newView)
+        view.layoutIfNeeded()
+        
+        insertedNodes.append(pos)
+        
+        showLightPhaseActionSheet(newPos: pos, isNew: true)
     }
     
     func onLongPress(_ sender: UILongPressGestureRecognizer) {
@@ -431,7 +467,7 @@ extension MetaInfoInputViewController: UIGestureRecognizerDelegate {
             let loc = rec.location(ofTouch: 0, in: backgroundImageView)
             
             if getNodes(atLocation: loc).count == 0 {
-                createView(atLocation: loc)
+                createView(atLocation: loc, existingPos: nil)
             }
         }
     }
@@ -442,16 +478,28 @@ extension MetaInfoInputViewController: UIGestureRecognizerDelegate {
         let redPhaseButton = UIAlertAction(title: "Rot", style: .default, handler: { (action) -> Void in
             newPos.view.backgroundColor = .red
             newPos.phase = .red
+            
+            if UserDefaults.isFirstAmpelCapture() {
+                self.helpBtnPressed()
+            }
         })
         
         let greenPhaseButton = UIAlertAction(title: "Grün", style: .default, handler: { (action) -> Void in
             newPos.view.backgroundColor = .green
             newPos.phase = .green
+            
+            if UserDefaults.isFirstAmpelCapture() {
+                self.helpBtnPressed()
+            }
         })
         
         let canelButton = UIAlertAction(title: "Abbrechen", style: .cancel, handler: { (action) -> Void in
             if isNew {
                 self.undoBtnPressed()
+                
+                if UserDefaults.isFirstAmpelCapture() {
+                    self.helpBtnPressed()
+                }
             }
         })
         
@@ -500,8 +548,13 @@ extension MetaInfoInputViewController: UIGestureRecognizerDelegate {
 }
 
 class LightPosition {
+    
+    public static let HEIGHT: CGFloat = 40
+    public static let WIDTH: CGFloat = 40
+    
     var view: UIView
     var phase: PhotoInformation.LightPhase?
+    var isMostRelevant = false
     var x: CGFloat?
     var y: CGFloat?
     

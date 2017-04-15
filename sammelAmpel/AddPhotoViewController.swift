@@ -61,6 +61,27 @@ class AddPhotoViewController: SwiftyCamViewController, SwiftyCamViewControllerDe
 
     }()
     
+    lazy var helpButton: UIView = {
+        let btn = UIButton(type: UIButtonType.infoLight)
+        btn.backgroundColor = .white
+        btn.layer.cornerRadius = 5
+        btn.layer.masksToBounds = true
+        
+        btn.layer.borderColor = UIColor.black.cgColor
+        btn.layer.borderWidth = 0.4
+        
+        //        btn.setImage(#imageLiteral(resourceName: "Back Filled-50"), for: .normal)
+        btn.tintColor = .black
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        
+        btn.addTarget(self, action: #selector(helpBtnPressed), for: .touchUpInside)
+        btn.isEnabled = true
+        btn.alpha = 1.0
+        
+        return btn
+        
+    }()
+    
     lazy var focusView: FocusView = {
         let view = FocusView()
         return view
@@ -117,14 +138,20 @@ class AddPhotoViewController: SwiftyCamViewController, SwiftyCamViewControllerDe
         captureButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         captureButton.widthAnchor.constraint(equalTo: captureButton.heightAnchor, multiplier: 1).isActive = true
         
-        view.addSubview(closeButton)
-        closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 12).isActive = true
-        closeButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 12).isActive = true
+        bottomContainerView.addSubview(helpButton)
+        helpButton.centerYAnchor.constraint(equalTo: bottomContainerView.centerYAnchor).isActive = true
+        helpButton.leftAnchor.constraint(equalTo: bottomContainerView.leftAnchor, constant: 12).isActive = true
+        helpButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        helpButton.widthAnchor.constraint(equalToConstant: 48).isActive = true
+        
+        bottomContainerView.addSubview(closeButton)
+        closeButton.centerYAnchor.constraint(equalTo: bottomContainerView.centerYAnchor).isActive = true
+        closeButton.rightAnchor.constraint(equalTo: bottomContainerView.rightAnchor, constant: -12).isActive = true
         closeButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
         closeButton.widthAnchor.constraint(equalToConstant: 48).isActive = true
         
         view.addSubview(titleLabel)
-        titleLabel.anchor(view.topAnchor, left: closeButton.rightAnchor, bottom: nil, right: view.rightAnchor, topConstant: 12, leftConstant: 12, bottomConstant: 0, rightConstant: 72, widthConstant: 0, heightConstant: 48)
+        titleLabel.anchor(view.topAnchor, left: helpButton.rightAnchor, bottom: nil, right: closeButton.leftAnchor, topConstant: 12, leftConstant: 12, bottomConstant: 0, rightConstant: 12, widthConstant: 0, heightConstant: 48)
         
         view.addSubview(focusView)
         view.bringSubview(toFront: focusView)
@@ -153,7 +180,7 @@ class AddPhotoViewController: SwiftyCamViewController, SwiftyCamViewControllerDe
     
     func setTitleText() {
         let attributes = [NSForegroundColorAttributeName: UIColor.white, NSStrokeWidthAttributeName: -2, NSStrokeColorAttributeName: UIColor.black] as [String : Any]
-        titleLabel.attributedText = NSAttributedString(string: "🚦 fotografieren", attributes: attributes)
+        titleLabel.attributedText = NSAttributedString(string: "🚦 Fotografieren", attributes: attributes)
     }
     
     override func viewDidLayoutSubviews() {
@@ -213,7 +240,7 @@ class AddPhotoViewController: SwiftyCamViewController, SwiftyCamViewControllerDe
         view.isUserInteractionEnabled = false
         photoInformation = PhotoInformation(image: nil, lights: nil, lightCount: nil, gyroPosition: nil, latitude: nil, longitude: nil, focusPos: nil)
         
-        photoInformation?.focusPos = focusView.frame.origin
+        photoInformation?.focusPos = focusView.getCenterPosition()
         
         //print(motionManager.attitude.pitch)
         if let radians = deviceMotion?.attitude.pitch {
@@ -230,6 +257,15 @@ class AddPhotoViewController: SwiftyCamViewController, SwiftyCamViewControllerDe
     
     @objc private func closeBtnPressed() {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @objc private func helpBtnPressed() {
+        let alertController = UIAlertController(title: "Erste Hilfe", message: "Bringe die momentan relevante Ampel ins Fadenkreuz und drücke den Auslöser.", preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "Verstanden 👌", style: .cancel, handler: nil)
+        
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
     }
     
     func swiftyCam(_ swiftyCam: SwiftyCamViewController, didTake photo: UIImage) {
