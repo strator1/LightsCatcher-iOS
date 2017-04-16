@@ -17,6 +17,8 @@
 		A30129FE1E92A86900B45EB1 /* sammelAmpelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30129FD1E92A86900B45EB1 /* sammelAmpelTests.swift */; };
 		A3012A091E92A86900B45EB1 /* sammelAmpelUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3012A081E92A86900B45EB1 /* sammelAmpelUITests.swift */; };
 		A3012A171E92A90B00B45EB1 /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3012A161E92A90B00B45EB1 /* HomeTabBarController.swift */; };
+		A31397761EA3905900E58469 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31397751EA3905900E58469 /* WebViewController.swift */; };
+		A31397791EA3914F00E58469 /* datenschutz.html in Resources */ = {isa = PBXBuildFile; fileRef = A31397781EA3914F00E58469 /* datenschutz.html */; };
 		A385FC0A1E9E09DD00822BC9 /* FocusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A385FC091E9E09DD00822BC9 /* FocusView.swift */; };
 		A38F45981E93EED000646FF1 /* PhotoInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38F45971E93EED000646FF1 /* PhotoInformation.swift */; };
 		A38F459B1E93F11800646FF1 /* MetaInfoInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38F459A1E93F11800646FF1 /* MetaInfoInputViewController.swift */; };
@@ -68,6 +70,8 @@
 		A3012A081E92A86900B45EB1 /* sammelAmpelUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sammelAmpelUITests.swift; sourceTree = "<group>"; };
 		A3012A0A1E92A86900B45EB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A3012A161E92A90B00B45EB1 /* HomeTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
+		A31397751EA3905900E58469 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		A31397781EA3914F00E58469 /* datenschutz.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = datenschutz.html; sourceTree = "<group>"; };
 		A385FC091E9E09DD00822BC9 /* FocusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusView.swift; sourceTree = "<group>"; };
 		A38F45971E93EED000646FF1 /* PhotoInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoInformation.swift; sourceTree = "<group>"; };
 		A38F459A1E93F11800646FF1 /* MetaInfoInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetaInfoInputViewController.swift; sourceTree = "<group>"; };
@@ -163,6 +167,7 @@
 		A30129E41E92A86900B45EB1 /* sammelAmpel */ = {
 			isa = PBXGroup;
 			children = (
+				A31397771EA3914F00E58469 /* data */,
 				A3FDD8831E94E66C00FF9C69 /* view */,
 				A38F45A01E94279600646FF1 /* helpers */,
 				A38F45991E93F10300646FF1 /* metaWizard */,
@@ -178,6 +183,7 @@
 				A3B09DEA1E92A9CB00ADB48F /* RankingViewController.swift */,
 				A38F459E1E94272300646FF1 /* LoginViewController.swift */,
 				A3FDD8811E94C36800FF9C69 /* SettingsViewController.swift */,
+				A31397751EA3905900E58469 /* WebViewController.swift */,
 			);
 			path = sammelAmpel;
 			sourceTree = "<group>";
@@ -198,6 +204,14 @@
 				A3012A0A1E92A86900B45EB1 /* Info.plist */,
 			);
 			path = sammelAmpelUITests;
+			sourceTree = "<group>";
+		};
+		A31397771EA3914F00E58469 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				A31397781EA3914F00E58469 /* datenschutz.html */,
+			);
+			path = data;
 			sourceTree = "<group>";
 		};
 		A38F45961E93EEBE00646FF1 /* model */ = {
@@ -363,6 +377,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A31397791EA3914F00E58469 /* datenschutz.html in Resources */,
 				A30129F31E92A86900B45EB1 /* LaunchScreen.storyboard in Resources */,
 				A30129F01E92A86900B45EB1 /* Assets.xcassets in Resources */,
 				A38F459D1E9426A700646FF1 /* GoogleService-Info.plist in Resources */,
@@ -543,6 +558,7 @@
 				A3FDD88B1E94E78B00FF9C69 /* RankingViewCells.swift in Sources */,
 				A3B09DEB1E92A9CB00ADB48F /* RankingViewController.swift in Sources */,
 				A385FC0A1E9E09DD00822BC9 /* FocusView.swift in Sources */,
+				A31397761EA3905900E58469 /* WebViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -688,14 +704,16 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 374735E8CB41851673862F71 /* Pods-sammelAmpel.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = P84Z6JD2F2;
 				INFOPLIST_FILE = sammelAmpel/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.hsa.sammelAmpel;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hsa.lightsCatcher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -703,14 +721,16 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9DF79E165425C71059C40188 /* Pods-sammelAmpel.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = P84Z6JD2F2;
 				INFOPLIST_FILE = sammelAmpel/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.hsa.sammelAmpel;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hsa.lightsCatcher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

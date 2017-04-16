@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 import Firebase
 import LBTAComponents
 
@@ -65,8 +66,24 @@ class RankingViewController: DatasourceController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if UserInformation.shared.isLoggedIn() {
+            
+            // Test authorization status for Camera and Micophone
+            if UserDefaults.isFirstLaunch() {
+                switch AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo){
+                case .notDetermined:
+                    
+                    // not yet determined
+                    AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeVideo, completionHandler: nil)
+                default: break
+                }
+                
+            }
+            
+            
             fetchRanking()
         }
+        
+        
         
     }
     
@@ -92,24 +109,7 @@ class RankingViewController: DatasourceController {
     }
     
     func fetchRanking() {
-        
         let usersRef = FIRDatabase.database().reference(withPath: "users")
-        usersRef.child((FIRAuth.auth()?.currentUser?.uid)!).observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
-            let value = snapshot.value as? NSDictionary
-            UserInformation.shared.setUser(dict: value)
-            
-            if let datasource = self.datasource as? RankingViewDatasource {
-                datasource.myRank = Rank(key: snapshot.key, position: 0, name: UserInformation.shared.name ?? "", points: UserInformation.shared.points ?? 0)
-                
-                self.collectionView?.reloadSections(IndexSet(integer: Section.overview.rawValue))
-            }
-            
-            
-        }) { (error) in
-            print(error.localizedDescription)
-        }
-        
         usersRef.queryOrdered(byChild: "points").queryLimited(toLast: 10).observeSingleEvent(of: .value, with: { (snapshot) in
             var ranks = [Rank]()
             
@@ -135,6 +135,30 @@ class RankingViewController: DatasourceController {
                 self.collectionView?.reloadSections(IndexSet(integer: Section.ranking.rawValue))
             }
         })
+        
+        if UserInformation.shared.isAnonymous() {
+            if let datasource = self.datasource as? RankingViewDatasource {
+                datasource.myRank = nil
+            }
+            collectionView?.reloadSections(IndexSet(integer: Section.overview.rawValue))
+            return
+        }
+        
+        usersRef.child((FIRAuth.auth()?.currentUser?.uid)!).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            UserInformation.shared.setUser(dict: value)
+            
+            if let datasource = self.datasource as? RankingViewDatasource {
+                datasource.myRank = Rank(key: snapshot.key, position: 0, name: UserInformation.shared.name ?? "", points: UserInformation.shared.points ?? 0)
+                
+                self.collectionView?.reloadSections(IndexSet(integer: Section.overview.rawValue))
+            }
+            
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
 
     }
     

@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SVProgressHUD
 
 class LoginViewController: UIViewController {
     
@@ -25,16 +26,41 @@ class LoginViewController: UIViewController {
         let btn = UIButton(type: .system)
         btn.layer.cornerRadius = 5
         btn.layer.masksToBounds = true
-        btn.backgroundColor = .black
+//        btn.backgroundColor = .black
         
         btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        btn.setTitle("Register", for: .normal)
-        btn.setTitleColor(.white, for: .normal)
+        btn.setTitle("Registrieren", for: .normal)
+//        btn.setTitleColor(.white, for: .normal)
         btn.translatesAutoresizingMaskIntoConstraints = false
         
         btn.addTarget(self, action: #selector(loginRegisterButtonPressed), for: .touchUpInside)
         
         return btn
+    }()
+    
+    lazy var continueAnonymousButton: UIButton = {
+        let btn = UIButton(type: .system)
+        btn.layer.cornerRadius = 5
+        btn.layer.masksToBounds = true
+        //        btn.backgroundColor = .black
+        
+        btn.titleLabel?.font = .systemFont(ofSize: 12)
+        btn.setTitle("Ohne Registrierung fortfahren", for: .normal)
+        //        btn.setTitleColor(.white, for: .normal)
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        
+        btn.addTarget(self, action: #selector(continueAnonymousButtonPressed), for: .touchUpInside)
+        
+        return btn
+    }()
+    
+    let titleLabel: UILabel = {
+       let l = UILabel()
+        l.textAlignment = .center
+        l.font = .boldSystemFont(ofSize: 30)
+        l.text = "🚦 Lights Catcher"
+        l.adjustsFontSizeToFitWidth = true
+        return l
     }()
     
     let nameTextField: UITextField = {
@@ -66,7 +92,7 @@ class LoginViewController: UIViewController {
     
     let textFieldSeparatorView: UIView = {
         let view = UIView()
-        view.backgroundColor = .black
+        view.backgroundColor = .lightGray
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
@@ -74,16 +100,24 @@ class LoginViewController: UIViewController {
     
     let textFieldSeparatorView2: UIView = {
         let view = UIView()
-        view.backgroundColor = .black
+        view.backgroundColor = .lightGray
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return view
+    }()
+    
+    let textFieldSeparatorView3: UIView = {
+        let view = UIView()
+        view.backgroundColor = .lightGray
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
     }()
     
     lazy var loginRegisterSegmentedControl: UISegmentedControl = {
-        let sc = UISegmentedControl(items: ["Login", "Register"])
+        let sc = UISegmentedControl(items: ["Login", "Registrieren"])
         sc.selectedSegmentIndex = 1
-        sc.tintColor = .black
+//        sc.tintColor = .black
         sc.translatesAutoresizingMaskIntoConstraints = false
         
         sc.addTarget(self, action: #selector(loginRegisterScSelectionChanged), for: .valueChanged)
@@ -155,14 +189,20 @@ class LoginViewController: UIViewController {
     }
     
     func registerUser() {
+        if (!validateTextFields(login: false)) {
+            return
+        }
+        
         guard let email = emailTextField.text, let password = passwordTextField.text, let name = nameTextField.text else {
             // Do error handling and feedback to the user here
             return
         }
         
+        showProgressIndicator()
         FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user: FIRUser?, error) in
             
             if error != nil {
+                self.showProgressError(withMessage: "Error")
                 print(error)
                 return
             }
@@ -181,10 +221,12 @@ class LoginViewController: UIViewController {
             usersRef.updateChildValues(values, withCompletionBlock: { (err, ref) in
                 
                 if err != nil {
+                    self.showProgressError(withMessage: "Error")
                     print(err)
                     return
                 }
                 
+                self.hideProgressIndictator(withDelay: 0)
                 print("Saved user successfully into Firebase db")
                 self.view.endEditing(true)
                 self.dismiss(animated: true, completion: nil)
@@ -193,24 +235,87 @@ class LoginViewController: UIViewController {
         })
     }
     
+    func continueAnonymousButtonPressed() {
+        showProgressIndicator()
+        FIRAuth.auth()?.signInAnonymously(completion: { (user, error) in
+            if error != nil {
+                self.showProgressError(withMessage: "Error")
+                print(error)
+                return
+            }
+            
+            self.hideProgressIndictator(withDelay: 0)
+            self.view.endEditing(true)
+            self.dismiss(animated: true, completion: nil)
+        })
+    }
+    
     func loginUser() {
+        if (!validateTextFields(login: true)) {
+            return
+        }
+        
         guard let email = emailTextField.text, let password = passwordTextField.text else {
             // Do error handling and feedback to the user here
             return
         }
         
+        showProgressIndicator()
         FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user: FIRUser?, error) in
             
             if error != nil {
+                self.showProgressError(withMessage: "Error")
                 print(error)
                 return
             }
             
+            self.hideProgressIndictator(withDelay: 0)
             print("Login successfully")
             self.view.endEditing(true)
             self.dismiss(animated: true, completion: nil)
             
         })
+    }
+    
+    func showProgressIndicator() {
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+        SVProgressHUD.show()
+        view.isUserInteractionEnabled = false
+    }
+    
+    func showProgressError(withMessage: String) {
+        SVProgressHUD.showError(withStatus: withMessage)
+        hideProgressIndictator(withDelay: 1)
+    }
+    
+    func hideProgressIndictator(withDelay: TimeInterval) {
+        SVProgressHUD.dismiss(withDelay: withDelay)
+        view.isUserInteractionEnabled = true
+    }
+
+    
+    func validateTextFields(login: Bool) -> Bool {
+        
+        if emailTextField.text == "" || passwordTextField.text == "" {
+            showCompletInputDialog()
+            return false
+        }
+        
+        if !login && (nameTextField.text == "" || (passwordTextField.text?.characters.count)! < 7) {
+            showCompletInputDialog()
+            return false
+        }
+        
+        return true
+    }
+    
+    func showCompletInputDialog() {
+        let alertController = UIAlertController(title: "Hinweis", message: "Bitte stelle sicher alle Eingabefelder vollständig ausgefüllt zu haben.\n Passwortlänge bitte größer 6 Stellen wählen.", preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+        alertController.addAction(action)
+        
+        present(alertController, animated: true, completion: nil)
     }
     
     var inputsContainerViewHeightAnchor: NSLayoutConstraint?
@@ -219,9 +324,13 @@ class LoginViewController: UIViewController {
     var passwordTextFieldHeightAnchor: NSLayoutConstraint?
     
     func setupView() {
+        view.addSubview(titleLabel)
         view.addSubview(loginRegisterSegmentedControl)
         view.addSubview(inputsContainerView)
         view.addSubview(loginRegisterButton)
+        view.addSubview(continueAnonymousButton)
+        
+        titleLabel.anchor(view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 12, leftConstant: 12, bottomConstant: 0, rightConstant: 12, widthConstant: 0, heightConstant: view.frame.height / 4)
         
         setupInputsContainerView()
         
@@ -234,6 +343,11 @@ class LoginViewController: UIViewController {
         loginRegisterButton.topAnchor.constraint(equalTo: inputsContainerView.bottomAnchor, constant: 8).isActive = true
         loginRegisterButton.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
         loginRegisterButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        
+        continueAnonymousButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        continueAnonymousButton.topAnchor.constraint(equalTo: loginRegisterButton.bottomAnchor, constant: 8).isActive = true
+        continueAnonymousButton.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
+        continueAnonymousButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
     
     func setupInputsContainerView() {
@@ -249,6 +363,7 @@ class LoginViewController: UIViewController {
         inputsContainerView.addSubview(emailTextField)
         inputsContainerView.addSubview(textFieldSeparatorView)
         inputsContainerView.addSubview(passwordTextField)
+        inputsContainerView.addSubview(textFieldSeparatorView3)
         
         nameTextField.centerXAnchor.constraint(equalTo: inputsContainerView.centerXAnchor).isActive = true
         nameTextField.topAnchor.constraint(equalTo: inputsContainerView.topAnchor).isActive = true
@@ -259,7 +374,7 @@ class LoginViewController: UIViewController {
         
         textFieldSeparatorView2.centerXAnchor.constraint(equalTo: inputsContainerView.centerXAnchor).isActive = true
         textFieldSeparatorView2.topAnchor.constraint(equalTo: nameTextField.bottomAnchor).isActive = true
-        textFieldSeparatorView2.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
+        textFieldSeparatorView2.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor, constant: -24).isActive = true
         textFieldSeparatorView2.heightAnchor.constraint(equalToConstant: 1).isActive = true
         
         emailTextField.centerXAnchor.constraint(equalTo: inputsContainerView.centerXAnchor).isActive = true
@@ -271,12 +386,17 @@ class LoginViewController: UIViewController {
         
         textFieldSeparatorView.centerXAnchor.constraint(equalTo: inputsContainerView.centerXAnchor).isActive = true
         textFieldSeparatorView.topAnchor.constraint(equalTo: emailTextField.bottomAnchor).isActive = true
-        textFieldSeparatorView.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
+        textFieldSeparatorView.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor, constant: -24).isActive = true
         textFieldSeparatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
         
         passwordTextField.centerXAnchor.constraint(equalTo: inputsContainerView.centerXAnchor).isActive = true
         passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor).isActive = true
         passwordTextField.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor, multiplier: 1, constant: -20).isActive = true
+        
+        textFieldSeparatorView3.centerXAnchor.constraint(equalTo: inputsContainerView.centerXAnchor).isActive = true
+        textFieldSeparatorView3.bottomAnchor.constraint(equalTo: passwordTextField.bottomAnchor).isActive = true
+        textFieldSeparatorView3.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor, constant: -24).isActive = true
+        textFieldSeparatorView3.heightAnchor.constraint(equalToConstant: 1).isActive = true
         
         passwordTextFieldHeightAnchor = passwordTextField.heightAnchor.constraint(equalTo: inputsContainerView.heightAnchor, multiplier: 1/3)
         passwordTextFieldHeightAnchor?.isActive = true

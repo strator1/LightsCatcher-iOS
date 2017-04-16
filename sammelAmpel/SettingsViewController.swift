@@ -33,7 +33,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         var title: String {
             switch self {
             case .account: return "Account"
-            case .about: return "About"
+            case .about: return "Info"
             }
         }
     }
@@ -91,7 +91,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             accountSectionCellData.append(createLogoutData)
         }
         
-        let projectInfoData = SettingCellData(image: nil, key: "Projektinfo", value: nil, action: .detailPage)
+        let projectInfoData = SettingCellData(image: nil, key: "Datenschutz", value: nil, action: .detailPage)
         aboutSectionCellData.append(projectInfoData)
         
         tableModel[Section.account.rawValue] = accountSectionCellData
@@ -156,7 +156,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                 break
             case .createAccount: handleCreateAccount()
                 break
-            case .detailPage: handleDetailPage()
+            case .detailPage: handleDetailPage(data: cellData)
                 break
             default: break
             }
@@ -185,8 +185,17 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         print("newAccount")
     }
     
-    func handleDetailPage() {
+    func handleDetailPage(data: SettingCellData) {
         print("detail")
+        
+        if data.key == "Datenschutz" {
+            let htmlFile = Bundle.main.path(forResource: "datenschutz", ofType: "html")
+            let html = try? String.init(contentsOfFile: htmlFile!, encoding: String.Encoding.utf8)
+            
+            let wvc = WebViewController()
+            wvc.html = html
+            navigationController?.pushViewController(wvc, animated: true)
+        }
     }
 }
 

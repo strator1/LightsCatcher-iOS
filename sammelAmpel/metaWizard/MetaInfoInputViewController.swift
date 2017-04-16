@@ -289,6 +289,7 @@ class MetaInfoInputViewController: UIViewController {
                             for (index, light) in lights.enumerated() {
                                 guard let x = light.x, let y = light.y, let phase = light.phase else { continue }
                                 var lightsDict = [String: Any]()
+                                lightsDict["isMostRelevant"] = light.isMostRelevant
                                 lightsDict["x"] = x
                                 lightsDict["y"] = y
                                 lightsDict["phase"] = phase.rawValue
@@ -333,9 +334,12 @@ class MetaInfoInputViewController: UIViewController {
         
         var childUpdates = ["/lights/\(uid)": values]
         
-        if let userDict = UserInformation.shared.getUserDictionary(addToPoints: 1) {
-            childUpdates["/users/\(UserInformation.shared.getUid() ?? "")"] = userDict
+        if !UserInformation.shared.isAnonymous() {
+            if let userDict = UserInformation.shared.getUserDictionary(addToPoints: 1) {
+                childUpdates["/users/\(UserInformation.shared.getUid() ?? "")"] = userDict
+            }
         }
+        
         
         ref.updateChildValues(childUpdates) { (err, ref) in
             if err != nil {

@@ -16,7 +16,7 @@ class UserInformation {
     var points: Int?
     
     private init() {
-        
+        self.name = "Anonymous"
     }
     
     static var shared: UserInformation = {
@@ -64,6 +64,10 @@ class UserInformation {
             completionHandler(logoutError)
             print(logoutError)
         }
+    }
+    
+    func isAnonymous() -> Bool {
+        return isLoggedIn() ? (FIRAuth.auth()?.currentUser?.isAnonymous)! : false
     }
     
     func isLoggedIn() -> Bool {

@@ -13,7 +13,11 @@ class OverviewHeaderCell: DatasourceCell, UICollectionViewDelegate, UICollection
     
     override var datasourceItem: Any? {
         didSet {
-            guard let item = datasourceItem as? Rank else { return }
+            guard let item = datasourceItem as? Rank else {
+                myRank = nil
+                collectionView.reloadItems(at: [IndexPath(item: 0, section: 0)])
+                return
+            }
             myRank = item
             collectionView.reloadItems(at: [IndexPath(item: 0, section: 0)])
         }
@@ -91,12 +95,18 @@ class OverviewHeaderCell: DatasourceCell, UICollectionViewDelegate, UICollection
             cell.backgroundColor = .white
             
             if let rank = myRank {
-             cell.titleLabel.text = rank.name + ", \(rank.points) Points"
+                cell.datasourceItem = rank
+            } else {
+                cell.titleLabel.attributedText = getAnonyomousText()
             }
             
         } else {
             cell.backgroundColor = .white
-            cell.titleLabel.text = "Projekt- + Challengeinformationen"
+             let attributedText = NSMutableAttributedString()
+            
+            attributedText.append(NSMutableAttributedString(string: "Lights Catcher ist ein Teilprojekt der Arbeitsgruppe 'Ampel-Assitenz-System' an der Hochschule Augsburg. Die gesammelten Ampelbilder und -daten werden dazu verwendet einen Algorithmus zur Erkennung von Ampelrot und Ampelgrünphasen zu entwickeln. Motivation ist es visuell beeinträchtigten Menschen das Überqueren von Fußgängerampeln zu erleichtern."
+, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 14)]))
+            cell.titleLabel.attributedText = attributedText
         }
         
         return cell
@@ -113,21 +123,65 @@ class OverviewHeaderCell: DatasourceCell, UICollectionViewDelegate, UICollection
         pageControl.currentPage = pageNumber
     }
     
+    func getAnonyomousText() -> NSAttributedString {
+        let attributedText = NSMutableAttributedString()
+        
+        attributedText.append(NSMutableAttributedString(string: "Hallo Ampeljäger,\n", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 16)]))
+        attributedText.append(NSMutableAttributedString(string: "danke für Deine Unterstützung, um am Ranking teilzunehmen einfach oben rechts\n\n", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 16)]))
+        attributedText.append(NSMutableAttributedString(string: "Einstellungen -> Logout -> Neuen Account anlegen\n", attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 16)]))
+        
+        // Create Paragraph style for lineSpacing
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = NSTextAlignment.center
+        paragraphStyle.lineSpacing = 2
+        let range = NSMakeRange(0, attributedText.string.characters.count)
+        attributedText.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: range)
+        
+        return attributedText
+    }
+    
 }
 
 class OverviewHeaderDataCell: DatasourceCell {
     
     override var datasourceItem: Any? {
         didSet {
-            guard let item = datasourceItem as? String else { return }
-            titleLabel.text = item
+            guard let item = datasourceItem as? Rank else {
+                return
+            }
+            
+            rank = item
+            
+            let attributedText = NSMutableAttributedString()
+            
+                attributedText.append(NSMutableAttributedString(string: "Hallo Ampeljäger ", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 17)]))
+                attributedText.append(NSMutableAttributedString(string: "\(item.name),\n", attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 17)]))
+                attributedText.append(NSMutableAttributedString(string: "danke für Deine Unterstützung, Du hast bis jetzt\n", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 17)]))
+                attributedText.append(NSMutableAttributedString(string: "\(item.points) Punkte ", attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 17)]))
+            
+            // Second line, til date
+            attributedText.append(NSMutableAttributedString(string: "gesammelt", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 17)]))
+            
+            
+            // Create Paragraph style for lineSpacing
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.alignment = NSTextAlignment.center
+            paragraphStyle.lineSpacing = 2
+            let range = NSMakeRange(0, attributedText.string.characters.count)
+            attributedText.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: range)
+            
+            titleLabel.attributedText = attributedText
         }
     }
+    
+    var rank: Rank?
     
     let titleLabel: UILabel = {
         let label = UILabel()
         label.text = ""
-        label.font = .boldSystemFont(ofSize: 18)
+        label.font = .systemFont(ofSize: 14)
+        label.textAlignment = .center
+        label.numberOfLines = 0
         return label
     }()
     
@@ -146,7 +200,7 @@ class OverviewHeaderDataCell: DatasourceCell {
         addSubview(titleLabel)
         addSubview(bottomDividerLineView)
         
-        titleLabel.anchor(topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 14, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
+        titleLabel.anchor(topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 14, leftConstant: 14, bottomConstant: 14, rightConstant: 14, widthConstant: 0, heightConstant: 0)
         bottomDividerLineView.anchor(nil, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0.4)
         
     }
@@ -266,11 +320,7 @@ class RankingCell: DatasourceCell {
         addSubview(positionLabel)
         addSubview(nameLabel)
         addSubview(pointsLabel)
-        
-//        positionLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 12).isActive = true
-//        positionLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8).isActive = true
-//        positionLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8).isActive = true
-//        positionLabel.widthAnchor.constraint(equalTo: positionLabel.heightAnchor, constant: 0).isActive = true
+    
         
         topDividerLineView.anchor(topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 0, leftConstant: 14, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0.4)
         
