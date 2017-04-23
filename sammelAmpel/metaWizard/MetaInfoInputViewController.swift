@@ -237,6 +237,45 @@ class MetaInfoInputViewController: UIViewController {
     }
     
     @objc private func sendBtnPressed() {
+        
+        UserInformation.shared.checkUserAgainstDatabase(completion: { (success: Bool, err: NSError?) in
+            if success {
+                self.uploadPhoto()
+            } else {
+                
+                if let err = err {
+                    switch err.code {
+                    case 17020:
+                        // No Connection, show dialog
+                        self.showNoConnectionAlert()
+                        return
+                    case 17999:
+                        // Disabled account, store userDefaults
+                        _ = UserDefaults.setUserBanned()
+                        break
+                    default: break
+                    }
+                }
+                
+                self.handleLogout()
+            }
+        })
+        
+    }
+    
+    func handleLogout() {
+        UserInformation.shared.logout { (err) in
+            if let error = err {
+                //TODO errorhandling
+                print(error.localizedDescription)
+                return
+            }
+            
+            present(LoginViewController(), animated: true, completion: nil)
+        }
+    }
+    
+    private func uploadPhoto() {
         photoInformation?.lights = insertedNodes
         showProgressIndicator()
         
@@ -255,7 +294,7 @@ class MetaInfoInputViewController: UIViewController {
                     }
                     
                     if let imageUrl = metadata?.downloadURL()?.absoluteString {
-
+                        
                         let key = NSUUID().uuidString
                         var user = String()
                         var lightsArray = [String: Any]()
@@ -276,7 +315,7 @@ class MetaInfoInputViewController: UIViewController {
                         if let pos = self.photoInformation?.gyroPosition {
                             gyroPosition = String(pos)
                         }
-
+                        
                         if let lat = self.photoInformation?.latitude {
                             latitude = lat.description
                         }
@@ -364,6 +403,12 @@ class MetaInfoInputViewController: UIViewController {
         pos.view.removeFromSuperview()
         insertedNodes.remove(at: insertedNodes.count - 1)
         print(insertedNodes.count)
+    }
+    
+    func showNoConnectionAlert() {
+        let alertDialog = UIAlertController(title: "Hinweis", message: "Du hast momentan keine Internetverbindung, versuche es später einfach nochmal", preferredStyle: .alert)
+        alertDialog.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+        present(alertDialog, animated: true, completion: nil)
     }
     
 }

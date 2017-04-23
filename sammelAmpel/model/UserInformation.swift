@@ -74,6 +74,18 @@ class UserInformation {
         return FIRAuth.auth()?.currentUser?.uid != nil
     }
     
+    func checkUserAgainstDatabase(completion: @escaping (_ success: Bool, _ error: NSError?) -> Void) {
+        guard let currentUser = FIRAuth.auth()?.currentUser else { return }
+        currentUser.getTokenForcingRefresh(true) { (idToken, error) in
+            if let error = error {
+                completion(false, error as NSError)
+                print(error.localizedDescription)
+            } else {
+                completion(true, nil)
+            }
+        }
+    }
+    
     
 }
 

@@ -67,7 +67,6 @@ class RankingViewController: DatasourceController {
         super.viewDidAppear(animated)
         if UserInformation.shared.isLoggedIn() {
             
-            // Test authorization status for Camera and Micophone
             if UserDefaults.isFirstLaunch() {
                 switch AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo){
                 case .notDetermined:
@@ -80,10 +79,9 @@ class RankingViewController: DatasourceController {
             }
             
             
-            fetchRanking()
+            self.fetchRanking()
+            
         }
-        
-        
         
     }
     
@@ -109,6 +107,7 @@ class RankingViewController: DatasourceController {
     }
     
     func fetchRanking() {
+    
         let usersRef = FIRDatabase.database().reference(withPath: "users")
         usersRef.queryOrdered(byChild: "points").queryLimited(toLast: 10).observeSingleEvent(of: .value, with: { (snapshot) in
             var ranks = [Rank]()
@@ -140,7 +139,7 @@ class RankingViewController: DatasourceController {
             if let datasource = self.datasource as? RankingViewDatasource {
                 datasource.myRank = nil
             }
-            collectionView?.reloadSections(IndexSet(integer: Section.overview.rawValue))
+            self.collectionView?.reloadSections(IndexSet(integer: Section.overview.rawValue))
             return
         }
         
@@ -159,6 +158,7 @@ class RankingViewController: DatasourceController {
         }) { (error) in
             print(error.localizedDescription)
         }
+
 
     }
     

@@ -44,6 +44,18 @@ extension UserDefaults {
         }
         return isFirstAmpelTagging
     }
+    
+    static func isUserBanned() -> Bool {
+        let key = "isUserBanned"
+        let isUserBanned = UserDefaults.standard.bool(forKey: key)
+        return isUserBanned
+    }
+    
+    static func setUserBanned() {
+        let key = "isUserBanned"
+        UserDefaults.standard.set(true, forKey: key)
+        UserDefaults.standard.synchronize()
+    }
 }
 
 extension UIViewController {

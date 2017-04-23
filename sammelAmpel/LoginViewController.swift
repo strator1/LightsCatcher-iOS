@@ -189,6 +189,12 @@ class LoginViewController: UIViewController {
     }
     
     func registerUser() {
+        if UserDefaults.isUserBanned() {
+            //show dialog
+            showUserBannedDialog()
+            return
+        }
+        
         if (!validateTextFields(login: false)) {
             return
         }
@@ -236,6 +242,12 @@ class LoginViewController: UIViewController {
     }
     
     func continueAnonymousButtonPressed() {
+        if UserDefaults.isUserBanned() {
+            //show dialog
+            showUserBannedDialog()
+            return
+        }
+        
         showProgressIndicator()
         FIRAuth.auth()?.signInAnonymously(completion: { (user, error) in
             if error != nil {
@@ -251,6 +263,12 @@ class LoginViewController: UIViewController {
     }
     
     func loginUser() {
+        if UserDefaults.isUserBanned() {
+            //show dialog
+            showUserBannedDialog()
+            return
+        }
+        
         if (!validateTextFields(login: true)) {
             return
         }
@@ -293,6 +311,11 @@ class LoginViewController: UIViewController {
         view.isUserInteractionEnabled = true
     }
 
+    func showUserBannedDialog() {
+        let alertDialog = UIAlertController(title: "Rote Ampel", message: "Wir mussten Dich leider aus dem Verkehr ziehen. Du hast zu viel unanständige Bilder hochgeladen, sorry. Bis zum nächsten mal vielleicht ;)", preferredStyle: .alert)
+        alertDialog.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+        present(alertDialog, animated: true, completion: nil)
+    }
     
     func validateTextFields(login: Bool) -> Bool {
         
