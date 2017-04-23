@@ -280,12 +280,16 @@ class MetaInfoInputViewController: UIViewController {
         showProgressIndicator()
         
         if let image = photoInformation?.image {
-            let imageName = NSUUID().uuidString
-            let storageRef = FIRStorage.storage().reference().child("lights_images").child("\(imageName)jpg")
+            let imageKey = NSUUID().uuidString
+            let storageRef = FIRStorage.storage().reference().child("lights_images").child("\(imageKey)")
             
             if let uploadData = UIImageJPEGRepresentation(image, 0.4) {
                 convertMarkersToAbsolutePosition()
-                storageRef.put(uploadData, metadata: nil, completion: { (metadata, error) in
+                
+                let newMetadata = FIRStorageMetadata()
+                newMetadata.contentType = "image/jpeg";
+                
+                storageRef.put(uploadData, metadata: newMetadata, completion: { (metadata, error) in
                     
                     if error != nil {
                         self.showProgressError(withMessage: "Uploadfehler")
@@ -295,7 +299,6 @@ class MetaInfoInputViewController: UIViewController {
                     
                     if let imageUrl = metadata?.downloadURL()?.absoluteString {
                         
-                        let key = NSUUID().uuidString
                         var user = String()
                         var lightsArray = [String: Any]()
                         var lightsCount = 0
@@ -339,7 +342,7 @@ class MetaInfoInputViewController: UIViewController {
                         let productDict = ["user": user, "imageUrl": imageUrl, "lightsCount": lightsCount, "lightPositions": lightsArray, "gyroPosition": gyroPosition, "latitude": latitude, "longitude": longitude, "createdAt": "\(createdAt)"] as [String: Any]
                         
                         
-                        self.saveDataIntoDatabaseWith(uid: key, values: productDict)
+                        self.saveDataIntoDatabaseWith(uid: imageKey, values: productDict)
                         
                     }
                     
