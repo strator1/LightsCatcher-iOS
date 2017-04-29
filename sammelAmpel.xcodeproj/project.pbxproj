@@ -12,7 +12,6 @@
 		958797FEBBD5E91F260D4D04 /* Pods_sammelAmpelUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBAE0753F0526AC4E631999D /* Pods_sammelAmpelUITests.framework */; };
 		A30129E61E92A86900B45EB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30129E51E92A86900B45EB1 /* AppDelegate.swift */; };
 		A30129EE1E92A86900B45EB1 /* sammelAmpel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A30129EC1E92A86900B45EB1 /* sammelAmpel.xcdatamodeld */; };
-		A30129F01E92A86900B45EB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A30129EF1E92A86900B45EB1 /* Assets.xcassets */; };
 		A30129F31E92A86900B45EB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A30129F11E92A86900B45EB1 /* LaunchScreen.storyboard */; };
 		A30129FE1E92A86900B45EB1 /* sammelAmpelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30129FD1E92A86900B45EB1 /* sammelAmpelTests.swift */; };
 		A3012A091E92A86900B45EB1 /* sammelAmpelUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3012A081E92A86900B45EB1 /* sammelAmpelUITests.swift */; };
@@ -25,6 +24,7 @@
 		A38F459D1E9426A700646FF1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A38F459C1E9426A700646FF1 /* GoogleService-Info.plist */; };
 		A38F459F1E94272300646FF1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38F459E1E94272300646FF1 /* LoginViewController.swift */; };
 		A38F45A21E94279F00646FF1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38F45A11E94279F00646FF1 /* Extensions.swift */; };
+		A39644611EB49E9000FDD324 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A39644601EB49E9000FDD324 /* Assets.xcassets */; };
 		A3B09DE91E92A97F00ADB48F /* AddPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B09DE81E92A97F00ADB48F /* AddPhotoViewController.swift */; };
 		A3B09DEB1E92A9CB00ADB48F /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B09DEA1E92A9CB00ADB48F /* RankingViewController.swift */; };
 		A3FDD8821E94C36800FF9C69 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FDD8811E94C36800FF9C69 /* SettingsViewController.swift */; };
@@ -60,7 +60,6 @@
 		A30129E21E92A86900B45EB1 /* sammelAmpel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sammelAmpel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A30129E51E92A86900B45EB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A30129ED1E92A86900B45EB1 /* sammelAmpel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = sammelAmpel.xcdatamodel; sourceTree = "<group>"; };
-		A30129EF1E92A86900B45EB1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A30129F21E92A86900B45EB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A30129F41E92A86900B45EB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A30129F91E92A86900B45EB1 /* sammelAmpelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = sammelAmpelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,6 +77,7 @@
 		A38F459C1E9426A700646FF1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A38F459E1E94272300646FF1 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A38F45A11E94279F00646FF1 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		A39644601EB49E9000FDD324 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../../.Trash/Assets.xcassets; sourceTree = "<group>"; };
 		A3B09DE81E92A97F00ADB48F /* AddPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPhotoViewController.swift; sourceTree = "<group>"; };
 		A3B09DEA1E92A9CB00ADB48F /* RankingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
 		A3FDD8811E94C36800FF9C69 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -173,8 +173,8 @@
 				A38F45991E93F10300646FF1 /* metaWizard */,
 				A38F45961E93EEBE00646FF1 /* model */,
 				A30129E51E92A86900B45EB1 /* AppDelegate.swift */,
-				A30129EF1E92A86900B45EB1 /* Assets.xcassets */,
 				A30129F11E92A86900B45EB1 /* LaunchScreen.storyboard */,
+				A39644601EB49E9000FDD324 /* Assets.xcassets */,
 				A30129F41E92A86900B45EB1 /* Info.plist */,
 				A38F459C1E9426A700646FF1 /* GoogleService-Info.plist */,
 				A30129EC1E92A86900B45EB1 /* sammelAmpel.xcdatamodeld */,
@@ -379,7 +379,7 @@
 			files = (
 				A31397791EA3914F00E58469 /* datenschutz.html in Resources */,
 				A30129F31E92A86900B45EB1 /* LaunchScreen.storyboard in Resources */,
-				A30129F01E92A86900B45EB1 /* Assets.xcassets in Resources */,
+				A39644611EB49E9000FDD324 /* Assets.xcassets in Resources */,
 				A38F459D1E9426A700646FF1 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

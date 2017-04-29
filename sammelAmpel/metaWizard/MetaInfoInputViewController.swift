@@ -279,10 +279,17 @@ class MetaInfoInputViewController: UIViewController {
         photoInformation?.lights = insertedNodes
         showProgressIndicator()
         
+        SVProgressHUD.showSuccess(withStatus: "Dankeschön!")
+        self.hideProgressIndictator(withDelay: 1)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.navigationController?.popToRootViewController(animated: true)
+        }
+
+        
         if let image = photoInformation?.image {
             let imageKey = NSUUID().uuidString
             let storageRef = FIRStorage.storage().reference().child("lights_images").child("\(imageKey)")
-            
+        
             if let uploadData = UIImageJPEGRepresentation(image, 0.4) {
                 convertMarkersToAbsolutePosition()
                 
@@ -292,7 +299,7 @@ class MetaInfoInputViewController: UIViewController {
                 storageRef.put(uploadData, metadata: newMetadata, completion: { (metadata, error) in
                     
                     if error != nil {
-                        self.showProgressError(withMessage: "Uploadfehler")
+//                        self.showProgressError(withMessage: "Uploadfehler")
                         print(error!)
                         return
                     }
@@ -373,8 +380,8 @@ class MetaInfoInputViewController: UIViewController {
     func saveDataIntoDatabaseWith(uid: String, values: [String: Any]) {
         //Saving user to database
         let ref = FIRDatabase.database().reference()
-        
-        var childUpdates = ["/lights/\(uid)": values]
+    
+        var childUpdates = ["/lights/v1_0/\(uid)": values]
         
         if !UserInformation.shared.isAnonymous() {
             if let userDict = UserInformation.shared.getUserDictionary(addToPoints: 1) {
@@ -382,21 +389,14 @@ class MetaInfoInputViewController: UIViewController {
             }
         }
         
-        
         ref.updateChildValues(childUpdates) { (err, ref) in
             if err != nil {
-                self.showProgressError(withMessage: "Uploadfehler")
+//                self.showProgressError(withMessage: "Uploadfehler")
                 print(err!)
                 return
             }
             
             print("Saved product successfully into Firebase db")
-            SVProgressHUD.showSuccess(withStatus: "Upload erfolgreich!")
-            self.hideProgressIndictator(withDelay: 1)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.navigationController?.popToRootViewController(animated: true)
-            }
-
         }
     }
     
@@ -454,6 +454,8 @@ extension MetaInfoInputViewController: UIGestureRecognizerDelegate {
         
         let newView = UIView()
         newView.backgroundColor = .red
+        newView.isOpaque = false
+        newView.alpha = 0.6
         newView.layer.cornerRadius = 4
         newView.layer.masksToBounds = true
         
@@ -623,11 +625,14 @@ class LightPosition {
     }
     
     func convertXYtoAbsImagePos(iv: UIImageView, img: UIImage) {
+        self.x = self.x! + (self.view.frame.width / 2)
+        self.y = self.y! + (self.view.frame.height / 2)
+        
         let percentX = self.x! / iv.frame.size.width
         let percentY = self.y! / iv.frame.size.height
         
-        self.x = img.size.width * percentX
-        self.y = img.size.height * percentY
+        self.x = (img.size.width * percentX) / img.size.width
+        self.y = (img.size.height * percentY) / img.size.height
     }
 }
 

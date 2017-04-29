@@ -264,7 +264,7 @@ class AddPhotoViewController: SwiftyCamViewController, SwiftyCamViewControllerDe
     }
     
     @objc private func helpBtnPressed() {
-        let alertController = UIAlertController(title: "Erste Hilfe", message: "Bringe die momentan relevante Ampel ins Fadenkreuz und drücke den Auslöser.", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Erste Hilfe", message: "Bringe die momentan relevante Ampel ins Fadenkreuz und drücke den Auslöser. \n\n Das Fadenkreuz wird jedes mal zufällig auf dem Bildschirm platziert, um unterschiedliche Perspektiven auf die Ampeln zu bekommen.", preferredStyle: .alert)
         
         let okAction = UIAlertAction(title: "Verstanden 👌", style: .cancel, handler: nil)
         
