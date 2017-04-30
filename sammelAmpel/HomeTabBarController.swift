@@ -18,7 +18,7 @@ class HomeTabBarController: UITabBarController, UITabBarControllerDelegate {
     lazy var cameraButton: UIButton = {
         let btn = UIButton(type: .system)
         
-        btn.setImage(#imageLiteral(resourceName: "Screenshot-50"), for: .normal)
+        btn.setImage(#imageLiteral(resourceName: "camera"), for: .normal)
 //        btn.translatesAutoresizingMaskIntoConstraints = false
         
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 12)

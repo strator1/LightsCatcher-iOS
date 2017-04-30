@@ -18,13 +18,13 @@
 		A3012A171E92A90B00B45EB1 /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3012A161E92A90B00B45EB1 /* HomeTabBarController.swift */; };
 		A31397761EA3905900E58469 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31397751EA3905900E58469 /* WebViewController.swift */; };
 		A31397791EA3914F00E58469 /* datenschutz.html in Resources */ = {isa = PBXBuildFile; fileRef = A31397781EA3914F00E58469 /* datenschutz.html */; };
+		A31F1AA01EB5BB6B00B8AB6A /* assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A31F1A9F1EB5BB6B00B8AB6A /* assets.xcassets */; };
 		A385FC0A1E9E09DD00822BC9 /* FocusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A385FC091E9E09DD00822BC9 /* FocusView.swift */; };
 		A38F45981E93EED000646FF1 /* PhotoInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38F45971E93EED000646FF1 /* PhotoInformation.swift */; };
 		A38F459B1E93F11800646FF1 /* MetaInfoInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38F459A1E93F11800646FF1 /* MetaInfoInputViewController.swift */; };
 		A38F459D1E9426A700646FF1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A38F459C1E9426A700646FF1 /* GoogleService-Info.plist */; };
 		A38F459F1E94272300646FF1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38F459E1E94272300646FF1 /* LoginViewController.swift */; };
 		A38F45A21E94279F00646FF1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38F45A11E94279F00646FF1 /* Extensions.swift */; };
-		A39644611EB49E9000FDD324 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A39644601EB49E9000FDD324 /* Assets.xcassets */; };
 		A3B09DE91E92A97F00ADB48F /* AddPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B09DE81E92A97F00ADB48F /* AddPhotoViewController.swift */; };
 		A3B09DEB1E92A9CB00ADB48F /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B09DEA1E92A9CB00ADB48F /* RankingViewController.swift */; };
 		A3FDD8821E94C36800FF9C69 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FDD8811E94C36800FF9C69 /* SettingsViewController.swift */; };
@@ -71,13 +71,13 @@
 		A3012A161E92A90B00B45EB1 /* HomeTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
 		A31397751EA3905900E58469 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		A31397781EA3914F00E58469 /* datenschutz.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = datenschutz.html; sourceTree = "<group>"; };
+		A31F1A9F1EB5BB6B00B8AB6A /* assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = assets.xcassets; sourceTree = "<group>"; };
 		A385FC091E9E09DD00822BC9 /* FocusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusView.swift; sourceTree = "<group>"; };
 		A38F45971E93EED000646FF1 /* PhotoInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoInformation.swift; sourceTree = "<group>"; };
 		A38F459A1E93F11800646FF1 /* MetaInfoInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetaInfoInputViewController.swift; sourceTree = "<group>"; };
 		A38F459C1E9426A700646FF1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A38F459E1E94272300646FF1 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A38F45A11E94279F00646FF1 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		A39644601EB49E9000FDD324 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../../.Trash/Assets.xcassets; sourceTree = "<group>"; };
 		A3B09DE81E92A97F00ADB48F /* AddPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPhotoViewController.swift; sourceTree = "<group>"; };
 		A3B09DEA1E92A9CB00ADB48F /* RankingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
 		A3FDD8811E94C36800FF9C69 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -174,7 +174,7 @@
 				A38F45961E93EEBE00646FF1 /* model */,
 				A30129E51E92A86900B45EB1 /* AppDelegate.swift */,
 				A30129F11E92A86900B45EB1 /* LaunchScreen.storyboard */,
-				A39644601EB49E9000FDD324 /* Assets.xcassets */,
+				A31F1A9F1EB5BB6B00B8AB6A /* assets.xcassets */,
 				A30129F41E92A86900B45EB1 /* Info.plist */,
 				A38F459C1E9426A700646FF1 /* GoogleService-Info.plist */,
 				A30129EC1E92A86900B45EB1 /* sammelAmpel.xcdatamodeld */,
@@ -379,7 +379,7 @@
 			files = (
 				A31397791EA3914F00E58469 /* datenschutz.html in Resources */,
 				A30129F31E92A86900B45EB1 /* LaunchScreen.storyboard in Resources */,
-				A39644611EB49E9000FDD324 /* Assets.xcassets in Resources */,
+				A31F1AA01EB5BB6B00B8AB6A /* assets.xcassets in Resources */,
 				A38F459D1E9426A700646FF1 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

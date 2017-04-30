@@ -312,7 +312,7 @@ class LoginViewController: UIViewController {
     }
 
     func showUserBannedDialog() {
-        let alertDialog = UIAlertController(title: "Rote Ampel", message: "Wir mussten Dich leider aus dem Verkehr ziehen. Du hast zu viel unanständige Bilder hochgeladen, sorry. Bis zum nächsten mal vielleicht ;)", preferredStyle: .alert)
+        let alertDialog = UIAlertController(title: "Rote Ampel", message: "Wir mussten Dich leider aus dem Verkehr ziehen. Du hast zu viele unanständige Bilder hochgeladen, sorry. Bis zum nächsten mal vielleicht ;)", preferredStyle: .alert)
         alertDialog.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
         present(alertDialog, animated: true, completion: nil)
     }
@@ -333,7 +333,7 @@ class LoginViewController: UIViewController {
     }
     
     func showCompletInputDialog() {
-        let alertController = UIAlertController(title: "Hinweis", message: "Bitte stelle sicher alle Eingabefelder vollständig ausgefüllt zu haben.\n Passwortlänge bitte größer 6 Stellen wählen.", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Hinweis", message: "Bitte stelle sicher, dass alle Eingabefelder vollständig ausgefüllt sind.\n Passwortlänge größer als 5 Stellen wählen.", preferredStyle: .alert)
         
         let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
         alertController.addAction(action)

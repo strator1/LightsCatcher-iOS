@@ -28,7 +28,7 @@ class AddPhotoViewController: SwiftyCamViewController, SwiftyCamViewControllerDe
         btn.layer.borderColor = UIColor.black.cgColor
         btn.layer.borderWidth = 0.4
         
-        btn.setImage(#imageLiteral(resourceName: "Delete Filled-50"), for: .normal)
+        btn.setImage(#imageLiteral(resourceName: "close"), for: .normal)
         btn.translatesAutoresizingMaskIntoConstraints = false
         
         btn.addTarget(self, action: #selector(closeBtnPressed), for: .touchUpInside)
@@ -47,7 +47,7 @@ class AddPhotoViewController: SwiftyCamViewController, SwiftyCamViewControllerDe
         btn.tintColor = .black
         
         btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        btn.setImage(#imageLiteral(resourceName: "Screenshot-50"), for: .normal)
+        btn.setImage(#imageLiteral(resourceName: "camera"), for: .normal)
         btn.translatesAutoresizingMaskIntoConstraints = false
         
         btn.layer.borderColor = UIColor.black.cgColor
