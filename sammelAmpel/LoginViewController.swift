@@ -58,7 +58,7 @@ class LoginViewController: UIViewController {
        let l = UILabel()
         l.textAlignment = .center
         l.font = .boldSystemFont(ofSize: 30)
-        l.text = "🚦 Lights Catcher"
+        l.text = "🚦 LightsCatcher"
         l.adjustsFontSizeToFitWidth = true
         return l
     }()
@@ -324,7 +324,7 @@ class LoginViewController: UIViewController {
             return false
         }
         
-        if !login && (nameTextField.text == "" || (passwordTextField.text?.characters.count)! < 7) {
+        if !login && (nameTextField.text == "" || (passwordTextField.text?.characters.count)! < 6) {
             showCompletInputDialog()
             return false
         }
@@ -333,7 +333,7 @@ class LoginViewController: UIViewController {
     }
     
     func showCompletInputDialog() {
-        let alertController = UIAlertController(title: "Hinweis", message: "Bitte stelle sicher, dass alle Eingabefelder vollständig ausgefüllt sind.\n Passwortlänge größer als 5 Stellen wählen.", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Hinweis", message: "Bitte stelle sicher, dass alle Eingabefelder vollständig ausgefüllt sind.\n Passwortlänge soll mindestens 6 Stellen haben.", preferredStyle: .alert)
         
         let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
         alertController.addAction(action)

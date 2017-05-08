@@ -42,7 +42,7 @@ class RankingViewController: DatasourceController {
         // Do any additional setup after loading the view, typically from a nib.
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "Settings-50"), style: .plain, target: self, action:  #selector(handleSettingsBtnPressed))
-        navigationItem.title = "🚦Lights Catcher"
+        navigationItem.title = "🚦LightsCatcher"
         
         collectionView?.backgroundColor = .backgroundGray
         collectionView?.allowsSelection = false
