@@ -11,7 +11,7 @@ import AVFoundation
 import Firebase
 import LBTAComponents
 
-class RankingViewController: DatasourceController {
+class RankingViewController: DatasourceController, FIRPersistenceConnectionStateDelegate {
     
     enum Section: Int {
         case overview = 0
@@ -41,7 +41,10 @@ class RankingViewController: DatasourceController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        ConnectionStateManager.shared.connectionStateDelegate = self
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "Settings-50"), style: .plain, target: self, action:  #selector(handleSettingsBtnPressed))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "Help-50"), style: .plain, target: self, action:  #selector(handleHelpBtnPressed))
         navigationItem.title = "🚦LightsCatcher"
         
         collectionView?.backgroundColor = .backgroundGray
@@ -90,6 +93,28 @@ class RankingViewController: DatasourceController {
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
+    func connectionState(didChangeTo: ConnectionState) {
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            
+            if ConnectionStateManager.shared.connectionState == didChangeTo {
+                if didChangeTo == .online {
+                    UIView.hr_setToastThemeColor(color: .green)
+                    self.view.makeToast(message: "Internetverbindung verfügbar", duration: 3, position: HRToastPositionDefault as AnyObject)
+                } else if didChangeTo == .offline {
+                    UIView.hr_setToastThemeColor(color: .red)
+                    self.view.makeToast(message: "Keine Internetverbindung", duration: 6000, position: HRToastPositionDefault as AnyObject)
+                }
+            }
+            
+        }
+        
+    }
+    
+    func executedOfflineWriteOperation() {
+        
+    }
+    
     func handleLogout() {
         UserInformation.shared.logout { (err) in
             if let error = err {
@@ -104,6 +129,17 @@ class RankingViewController: DatasourceController {
     
     func handleSettingsBtnPressed() {
         navigationController?.pushViewController(SettingsViewController(), animated: true)
+    }
+    
+    func handleHelpBtnPressed() {
+        let htmlUrl = Bundle.main.url(forResource: "help", withExtension: "html")
+        
+        let urlRequest = URLRequest(url: htmlUrl!)
+        
+        let wvc = WebViewController()
+        wvc.urlRequest = urlRequest
+        
+        navigationController?.pushViewController(wvc, animated: true)
     }
     
     func fetchRanking() {

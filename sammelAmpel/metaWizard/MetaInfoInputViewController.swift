@@ -78,7 +78,7 @@ class MetaInfoInputViewController: UIViewController {
     }()
     
     lazy var helpButton: UIView = {
-        let btn = UIButton(type: UIButtonType.infoLight)
+        let btn = UIButton(type: .system)
         btn.backgroundColor = .white
         btn.layer.cornerRadius = 5
         btn.layer.masksToBounds = true
@@ -86,7 +86,7 @@ class MetaInfoInputViewController: UIViewController {
         btn.layer.borderColor = UIColor.black.cgColor
         btn.layer.borderWidth = 0.4
         
-//        btn.setImage(#imageLiteral(resourceName: "Back Filled-50"), for: .normal)
+        btn.setImage(#imageLiteral(resourceName: "Help-50"), for: .normal)
         btn.tintColor = .black
         btn.translatesAutoresizingMaskIntoConstraints = false
         
@@ -238,7 +238,14 @@ class MetaInfoInputViewController: UIViewController {
     
     @objc private func sendBtnPressed() {
         
+        if !ConnectionStateManager.shared.isConnectedToInternet {
+            self.showNoConnectionAlert()
+            return
+        }
+        
+        showProgressIndicator()
         UserInformation.shared.checkUserAgainstDatabase(completion: { (success: Bool, err: NSError?) in
+            self.hideProgressIndictator(withDelay: 0)
             if success {
                 self.uploadPhoto()
             } else {

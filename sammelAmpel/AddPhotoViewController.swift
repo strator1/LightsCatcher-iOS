@@ -62,7 +62,7 @@ class AddPhotoViewController: SwiftyCamViewController, SwiftyCamViewControllerDe
     }()
     
     lazy var helpButton: UIView = {
-        let btn = UIButton(type: UIButtonType.infoLight)
+        let btn = UIButton(type: .system)
         btn.backgroundColor = .white
         btn.layer.cornerRadius = 5
         btn.layer.masksToBounds = true
@@ -70,7 +70,7 @@ class AddPhotoViewController: SwiftyCamViewController, SwiftyCamViewControllerDe
         btn.layer.borderColor = UIColor.black.cgColor
         btn.layer.borderWidth = 0.4
         
-        //        btn.setImage(#imageLiteral(resourceName: "Back Filled-50"), for: .normal)
+        btn.setImage(#imageLiteral(resourceName: "Help-50"), for: .normal)
         btn.tintColor = .black
         btn.translatesAutoresizingMaskIntoConstraints = false
         
@@ -264,7 +264,7 @@ class AddPhotoViewController: SwiftyCamViewController, SwiftyCamViewControllerDe
     }
     
     @objc private func helpBtnPressed() {
-        let alertController = UIAlertController(title: "Erste Hilfe", message: "Bringe die momentan relevante Ampel ins Fadenkreuz und drücke den Auslöser. \n\n Das Fadenkreuz wird jedes mal zufällig auf dem Bildschirm platziert, um unterschiedliche Perspektiven auf die Ampeln zu bekommen.", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Erste Hilfe", message: "Bringe die momentan relevante Fußgängerampel ins Fadenkreuz und drücke den Auslöser. \n\n Das Fadenkreuz wird jedes mal zufällig auf dem Bildschirm platziert, um unterschiedliche Perspektiven auf die Fußgängerampeln zu bekommen.", preferredStyle: .alert)
         
         let okAction = UIAlertAction(title: "Verstanden 👌", style: .cancel, handler: nil)
         

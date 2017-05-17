@@ -16,6 +16,8 @@ class WebViewController: UIViewController {
     
     var html: String?
     
+    var urlRequest: URLRequest?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,6 +25,10 @@ class WebViewController: UIViewController {
         
         if let html = html {
             webView.loadHTMLString(html, baseURL: nil)
+        }
+        
+        if let urlRequest = urlRequest {
+            webView.loadRequest(urlRequest)
         }
     }
     

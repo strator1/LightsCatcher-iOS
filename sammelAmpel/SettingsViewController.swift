@@ -94,6 +94,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         let projectInfoData = SettingCellData(image: nil, key: "Datenschutz", value: nil, action: .detailPage)
         aboutSectionCellData.append(projectInfoData)
         
+        let termsOfUseDate = SettingCellData(image: nil, key: "Nutzungsbedingungen", value: nil, action: .detailPage)
+        aboutSectionCellData.append(termsOfUseDate)
+        
         tableModel[Section.account.rawValue] = accountSectionCellData
         tableModel[Section.about.rawValue] = aboutSectionCellData
     }
@@ -186,16 +189,19 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func handleDetailPage(data: SettingCellData) {
-        print("detail")
+        var htmlUrl: URL?
         
         if data.key == "Datenschutz" {
-            let htmlFile = Bundle.main.path(forResource: "datenschutz", ofType: "html")
-            let html = try? String.init(contentsOfFile: htmlFile!, encoding: String.Encoding.utf8)
-            
-            let wvc = WebViewController()
-            wvc.html = html
-            navigationController?.pushViewController(wvc, animated: true)
+            htmlUrl = Bundle.main.url(forResource: "datenschutz", withExtension: "html")            
+        } else if data.key == "Nutzungsbedingungen" {
+            htmlUrl = Bundle.main.url(forResource: "terms_of_use", withExtension: "html")
         }
+        
+        let urlRequest = URLRequest(url: htmlUrl!)
+        
+        let wvc = WebViewController()
+        wvc.urlRequest = urlRequest
+        navigationController?.pushViewController(wvc, animated: true)
     }
 }
 

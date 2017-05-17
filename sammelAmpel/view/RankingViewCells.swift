@@ -97,7 +97,11 @@ class OverviewHeaderCell: DatasourceCell, UICollectionViewDelegate, UICollection
             if let rank = myRank {
                 cell.datasourceItem = rank
             } else {
-                cell.titleLabel.attributedText = getAnonyomousText()
+                if UserInformation.shared.isAnonymous() {
+                    cell.titleLabel.attributedText = getAnonyomousText()
+                } else {
+                    cell.titleLabel.text = ""
+                }
             }
             
         } else {
